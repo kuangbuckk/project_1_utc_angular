@@ -1,3 +1,4 @@
+import { UserResponse } from './../../responses/user.response';
 import { Component, ViewChild } from '@angular/core';
 import { LoginDTO } from '../../dtos/user/login.dto';
 import { NgForm } from '@angular/forms';
@@ -17,11 +18,10 @@ export class LoginComponent {
   @ViewChild('loginForm') loginForm!: NgForm;
   email: string;
   password: string;
-
   roles: Role[] = [];
   rememberMe: boolean = true;
   selectedRole: Role | undefined;
-
+  userResponse?: UserResponse | undefined;
 
   constructor(
     private router: Router,
@@ -59,7 +59,29 @@ export class LoginComponent {
     this.userService.login(loginDTO).subscribe({
       next: (response: LoginResponse) => {
         const { token } = response;
-        this.tokenService.setToken(token);
+        if  (this.rememberMe){
+          this.tokenService.setToken(token);
+          this.userService.getUserDetail(token).subscribe({
+            next: (userResponse: any) => {
+              this.userResponse = {
+                id: userResponse.id,
+                fullname: userResponse.fullname,
+                address: userResponse.address,
+                date_of_birth: userResponse.date_of_birth,
+                roles: userResponse.roles
+              };
+              alert(userResponse.fullname + ' logged in successfully');
+              this.userService.saveUserResponseToLocalStorage(this.userResponse);
+              this.router.navigate(['/']);
+            },
+            complete: () => {
+              //xử lý khi request hoàn thành
+            },
+            error: (error: any) => {
+              alert('Get user details failed: ' + error.message);
+            }
+          })
+        }
       },
       complete: () => {
         //xử lý khi request hoàn thành

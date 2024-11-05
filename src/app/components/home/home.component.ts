@@ -14,7 +14,7 @@ export class HomeComponent {
   events: Event[] = [];
   categories: Category[] = [];
   selectedCategoryId: number  = 0;
-  currentPage: number = 1;
+  currentPage: number = 0;
   itemsPerPage: number = 6;
   totalPages:number = 0;
   visiblePages: number[] = [];
@@ -44,7 +44,7 @@ export class HomeComponent {
     this.eventService.getEvents(page, itemsPerPage).subscribe({
       next: (response: any) => {
         response.events.forEach((event: Event) => {
-          event.url = `${environment.apiBaseUrl}/events/iamges/${event.thumbnail}`;
+          event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
         });
         this.events = response.events;
         this.totalPages = response.totalPages;
