@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { AppComponent } from './app/app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     DetailEventComponent,
     TicketOrderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     { 
@@ -35,7 +39,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     }
   ],
   bootstrap: [
-    HomeComponent
+    AppComponent
+    // HomeComponent
     // RegisterComponent
     // LoginComponent
     // DetailEventComponent
