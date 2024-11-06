@@ -19,6 +19,7 @@ export class HomeComponent {
   itemsPerPage: number = 6;
   totalPages:number = 0;
   visiblePages: number[] = [];
+  keyword: string = '';
 
   constructor(
     private router: Router,
@@ -27,11 +28,12 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getEvents(this.currentPage, this.itemsPerPage);
+    this.getCategories();
   }
 
-  getCategories(page: number, limit: number) {
+  getCategories() {
     this.categoryService.getCategories().subscribe({
-      next: (categories: Category[]) => {
+      next: (categories: any) => {
         debugger;
         this.categories = categories;
       },
@@ -62,6 +64,44 @@ export class HomeComponent {
       }
     })
   }
+  
+  searchEvents() {
+    this.eventService.searchEventByKeyword(this.keyword, this.currentPage, this.itemsPerPage).subscribe({
+      next: (response: any) => {
+        response.events.forEach((event: Event) => {
+          event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
+        });
+        this.events = response.events;
+        this.totalPages = response.totalPages;
+        this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
+      },
+      complete: () => {
+        
+      },
+      error: (error: any) => {
+        console.error('Error fetching events:', error);
+      }
+    });
+  }
+
+  getEventsByCategory(categoryId: number) {
+    this.eventService.getEventsByCategoryId(categoryId, this.currentPage, this.itemsPerPage).subscribe({
+      next: (response: any) => {
+        response.events.forEach((event: Event) => {
+          event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
+        });
+        this.events = response.events;
+        this.totalPages = response.totalPages;
+        this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
+      },
+      complete: () => {
+        
+      },
+      error: (error: any) => {
+        console.error('Error fetching events:', error);
+      }
+    });
+  }
 
   onPageChange(page: number) {
     debugger;
@@ -88,4 +128,6 @@ export class HomeComponent {
   goToDetail(eventId: number): void {
     this.router.navigate(['/event', eventId]);
   }
+
+  
 }

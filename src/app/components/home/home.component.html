@@ -1,5 +1,28 @@
 <app-header></app-header>
 <div class="container">
+  <div class="container mt-4 mb-2">
+      <form class="d-flex" (ngSubmit)="searchEvents()">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Tìm sự kiện"
+          aria-label="Search"
+          [(ngModel)]="keyword"
+          name="search"
+        />
+        <button class="btn btn-outline-success" type="submit">Tìm</button>
+      </form>
+      <div id="category-containter">
+        <div class="row">
+          <div class="col-lg-2 col-md-6 mt-4 mb-2" *ngFor="let category of categories">
+            <div class="category-item" style="cursor: pointer;" >
+                <h5 (click)="getEventsByCategory(category.id)">{{ category.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- for categories later -->
+  </div>
     <div id="event-container" class="row">
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of events">
             <div class="card event-item" style="width: 18rem;" (click)="goToDetail(event.id)">
