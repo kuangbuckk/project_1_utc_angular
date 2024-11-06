@@ -60,8 +60,13 @@ export class RegisterComponent {
         //xử lý khi request hoàn thành
       },
       error: (error: any) => {
+        debugger
         //xử lý khi request gặp lỗi
-        alert('Register failed: ' + error.message);
+        if (Array.isArray(error.error)) {
+          alert(error.error.join('\n'));
+        } else {
+          alert(error.error ?? 'An error occurred');
+        }
       }
     })
   }
