@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpInterceptor } from '@angular/c
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/ticket-order-confirm.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     TicketOrderComponent,
     LoginComponent,
     RegisterComponent,
-    AppComponent
+    AppComponent,
+    TicketOrderConfirmComponent
   ],
   imports: [
     BrowserModule,
