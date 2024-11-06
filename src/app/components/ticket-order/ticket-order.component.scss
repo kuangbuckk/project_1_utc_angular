@@ -3,3 +3,60 @@
     padding: 1rem;
     text-align: center;
 }
+
+#event-container{
+    padding: 4rem;
+    margin-bottom: 5rem;
+}
+
+#ticket-category-detail{
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.ticket-category-details {
+    color: white;
+    padding: 20px;
+}
+
+.ticket-category-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.ticket-category-actions button {
+    margin-right: 10px;
+}
+.border-wrapper {
+    border: 1px solid white;      
+}
+
+  .ticket-category-quantity {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 10px;
+  }
+
+  .ticket-category-quantity button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  .ticket-category-quantity input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 40px;
+    margin: 0 10px;
+  }
+  .ticket-category-quantity input:focus {
+    outline: none;
+  }  

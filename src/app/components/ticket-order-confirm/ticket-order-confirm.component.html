@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container confirmation-container">
+    <div>
+        <h1>Xác nhận đơn đặt vé</h1>
+        <p>Cảm ơn bạn đã đặt vé! Dưới đây là thông tin chi tiết về đơn đặt vé của bạn</p>     
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Thông tin đơn đặt vé</h2>
+            <form>
+                <fieldset>
+                  <div class="mb-3">
+                    <label for="payment-method" class="form-label">Phương thức thanh toán</label>
+                    <select id="payment-method" class="form-select">
+                      <option>Tiền mặt</option>
+                      <option>Chuyển khoản</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Xác nhận thanh toán</button>
+                  <button class="btn btn-secondary" style="margin-left: 1.5rem;" (click)="clearCart()">Huỷ giỏ hàng</button>
+                </fieldset>
+              </form>
+        </div>
+        <div class="col-lg-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-start">Loại vé</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Tổng giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of cartItems">
+                        <tr>
+                            <td>
+                                <div class="ticket-category-info">
+                                    <span class="ticket-category-name">{{ item.ticketCategory.category_name }}</span>
+                                </div>
+                            </td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.ticketCategory.price | currency:'VND':'symbol':'1.0-0' }}</td>
+                            <td>{{ (item.ticketCategory.price * item.quantity) | currency:'VND':'symbol':'1.0-0' }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>   
+            <p class="mb-0">Tổng tiền: {{ totalAmount | currency:'VND':'symbol':'1.0-0' }}</p>
+        </div>
+    </div>    
+</div>
+<app-footer></app-footer>
