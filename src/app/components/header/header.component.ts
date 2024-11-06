@@ -1,6 +1,7 @@
 import { UserResponse } from './../../responses/user.response';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
   userResponse?: UserResponse | null;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     this.userService.removeUserFromLocalStorage();
+    this.tokenService.removeToken();
     this.userResponse = null;
   }
 }
