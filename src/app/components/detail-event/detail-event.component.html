@@ -17,7 +17,7 @@
                   <div *ngFor="let image of event?.event_images; let i = index" 
                        class="carousel-item" [ngClass]="{'active': i === currentImageIndex}">
                     <div class="square-image">
-                      <img [src]="image.image_url" class="product-image" alt="Product Image">
+                      <img [src]="image.image_url" class="event-image" alt="Event Image">
                     </div>
                   </div>
                 </div>

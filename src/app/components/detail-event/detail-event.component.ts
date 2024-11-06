@@ -33,8 +33,10 @@ export class DetailEventComponent implements OnInit {
       this.eventService.getEventById(this.eventId).subscribe({
         next: (event: any) => {
           if (event.event_images && event.event_images.length > 0) {
-            event.event_images.forEach((event_images:EventImage) => {
-              event_images.image_url = `${environment.apiBaseUrl}/events/images/${event_images.image_url}`;
+            event.event_images.forEach((event_image:EventImage) => {
+              debugger
+              event_image.image_url = `${environment.apiBaseUrl}/events/images/${event_image.imageUrl}`;
+              console.log(event_image);
             });
             this.event = event 
             // Bắt đầu với ảnh đầu tiên
