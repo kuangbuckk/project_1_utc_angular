@@ -37,7 +37,7 @@
               </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="ticket-categories-container">
         <h2>Các loại vé</h2>
         <div class="ticket-categories">
           <table class="table table-striped">
@@ -55,7 +55,8 @@
                 <td>{{ ticketCategory.price | currency: 'VND' }}</td>
                 <td>{{ ticketCategory.remaining_count }}</td>
                 <td>
-                  <button class="btn btn-primary" (click)="onOrderTicket(ticketCategory.id)">Đặt mua</button>
+                  <!-- (click)="onOrderTicket(ticketCategory.id)" -->
+                  <button class="btn btn-primary" (click)="goToTicketCategoryDetail(ticketCategory.id)" >Đặt mua</button>
                 </td>
               </tr>
             </tbody>

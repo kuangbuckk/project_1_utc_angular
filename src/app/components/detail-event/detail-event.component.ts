@@ -104,7 +104,7 @@ export class DetailEventComponent implements OnInit {
     this.showImage(this.currentImageIndex - 1);
   }      
 
-  onOrderTicket(ticketCategoryId: number){
-
+  goToTicketCategoryDetail(ticketCategoryId: number){
+    this.route.navigate(['ticket-category', ticketCategoryId]);
   }
 }
