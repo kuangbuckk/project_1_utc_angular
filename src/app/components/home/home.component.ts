@@ -4,6 +4,7 @@ import { environment } from '../../enviroments/enviroment';
 import { Event } from '../../model/event';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../model/category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,10 @@ export class HomeComponent {
   totalPages:number = 0;
   visiblePages: number[] = [];
 
-  constructor(private eventService: EventService, private categoryService: CategoryService) { }
+  constructor(
+    private router: Router,
+    private eventService: EventService,
+    private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.getEvents(this.currentPage, this.itemsPerPage);
@@ -79,5 +83,9 @@ export class HomeComponent {
   
     return new Array(endPage - startPage + 1).fill(0)
       .map((_, index) => startPage + index);
+  }
+
+  goToDetail(eventId: number): void {
+    this.router.navigate(['/event', eventId]);
   }
 }

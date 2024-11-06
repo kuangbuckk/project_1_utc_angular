@@ -17,4 +17,8 @@ export class EventService {
       .set('limit', limit.toString())
       return this.http.get<Event[]>(this.apiGetEvents, {params})
   }
+
+  getEventById(id: number):Observable<Event>{
+      return this.http.get<Event>(`${this.apiGetEvents}/${id}`)
+  }
 }

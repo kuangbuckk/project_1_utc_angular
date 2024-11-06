@@ -11,5 +11,5 @@ export interface Event {
     category_id: number;
     organization_id: number;
     url: string;
-    event_image: EventImage[];
+    event_images: EventImage[];
 }

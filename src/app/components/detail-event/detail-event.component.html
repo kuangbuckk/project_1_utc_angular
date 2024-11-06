@@ -1,56 +1,51 @@
 <app-header></app-header>
-<div class="container">
+<div class="container-fluid">
     <div id="event-container" class="row">
         <h2>Chi tiết sự kiện</h2>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="col-lg-6 col-md-6">
+            <div class="container">
+                <div class="container-body">
+                  <h2 class="container-title">{{ event?.name }}</h2>
+                  <p class="card-text">{{ event?.description}}</p>
+                  <a href="#" class="btn btn-primary">Địa điểm tổ chức: {{ event?.location }}</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="col-lg-6 col-md-6">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div *ngFor="let image of event?.event_images; let i = index" 
+                       class="carousel-item" [ngClass]="{'active': i === currentImageIndex}">
+                    <div class="square-image">
+                      <img [src]="image.image_url" class="product-image" alt="Product Image">
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" 
+                        data-bs-slide="prev" (click)="previousImage()">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" 
+                        data-bs-slide="next" (click)="nextImage()">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+    </div>
+    <div class="container">
+        <h2>Các loại vé</h2>
+        <div class="ticket-categories">
+            <ul>
+                <li *ngFor="let ticketCategory of ticketCategories">
+                    <div class="ticket-category">
+                        <h3>{{ ticketCategory.category_name }}</h3>
+                        <p>Giá: {{ ticketCategory.price }}VND Số lượng:<span>{{ ticketCategory.remaining_count }}</span></p>
+                        <button class="btn btn-primary" (click)="onOrderTicket(ticketCategory.id)">Đặt vé</button>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

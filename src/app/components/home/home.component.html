@@ -2,7 +2,7 @@
 <div class="container">
     <div id="event-container" class="row">
         <div class="col-lg-4 col-md-6" *ngFor="let event of events">
-            <div class="card event-item" style="width: 18rem;">
+            <div class="card event-item" style="width: 18rem;" (click)="goToDetail(event.id)">
                 <img [src]="event.url" class="card-img-top" alt="event-img">
                 <div class="card-body">
                   <h3 class="card-title">{{ event.name }}</h3>
