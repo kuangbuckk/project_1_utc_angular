@@ -6,6 +6,8 @@ import { EventImage } from '../../model/event.image';
 import { environment } from '../../enviroments/enviroment';
 import { Event } from '../../model/event';
 import { TicketCategory } from '../../model/ticket.category';
+import { OrganizationService } from '../../services/organization.service';
+import { Organization } from '../../model/organization';
 
 @Component({
   selector: 'app-detail-event',
@@ -17,12 +19,14 @@ export class DetailEventComponent implements OnInit {
   event?: Event;
   currentImageIndex: number = 0;
   ticketCategories: TicketCategory[] = [];
+  organization?: Organization;
 
   constructor(
     private route: Router, 
     private activatedRoute: ActivatedRoute,
     private eventService: EventService,
-    private ticketCategoryService: TicketCategoryService) { }
+    private ticketCategoryService: TicketCategoryService,
+    private organizationService: OrganizationService) { }
 
   ngOnInit() {
     const idParam = this.activatedRoute.snapshot.paramMap.get('id');
@@ -51,6 +55,17 @@ export class DetailEventComponent implements OnInit {
             },
             error: (error: any) => {
               console.error('Error fetching ticket categories:', error);
+            }
+          });
+          this.organizationService.getOrganizationById(event.organization_id).subscribe({
+            next: (organization: any) => {
+              this.organization = organization;
+            },
+            complete: () => {
+              console.log('Completed');
+            },
+            error: (error: any) => {
+              console.error('Error fetching organization: ', error.error);
             }
           });
         },

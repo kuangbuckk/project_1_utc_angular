@@ -1,13 +1,16 @@
 <app-header></app-header>
 <div class="container-fluid">
     <div id="event-container" class="row">
-        <h2>Chi tiết sự kiện</h2>
+        <h2 class="text-center mt-4 mb-5">Chi tiết sự kiện</h2>
         <div class="col-lg-6 col-md-6">
             <div class="container">
                 <div class="container-body">
                   <h2 class="container-title">{{ event?.name }}</h2>
                   <p class="card-text">{{ event?.description}}</p>
-                  <a href="#" class="btn btn-primary">Địa điểm tổ chức: {{ event?.location }}</a>
+                  <h3 href="#" class="green"><i class="fas fa-map-pin"></i> Địa điểm tổ chức:</h3>
+                  <p>{{ event?.location }}</p>
+                  <h3><i class="far fa-calendar"></i> Thời gian tổ chức:</h3>
+                  <p>{{event?.start_date }} - {{ event?.end_date}}</p>
                 </div>
             </div>
         </div>
@@ -37,16 +40,31 @@
     <div class="container">
         <h2>Các loại vé</h2>
         <div class="ticket-categories">
-            <ul>
-                <li *ngFor="let ticketCategory of ticketCategories">
-                    <div class="ticket-category">
-                        <h3>{{ ticketCategory.category_name }}</h3>
-                        <p>Giá: {{ ticketCategory.price }}VND Số lượng:<span>{{ ticketCategory.remaining_count }}</span></p>
-                        <button class="btn btn-primary" (click)="onOrderTicket(ticketCategory.id)">Đặt vé</button>
-                    </div>
-                </li>
-            </ul>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Loại vé</th>
+                <th>Giá (VND)</th>
+                <th>Số vé còn lại</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ticketCategory of ticketCategories">
+                <td>{{ ticketCategory.category_name }}</td>
+                <td>{{ ticketCategory.price | currency: 'VND' }}</td>
+                <td>{{ ticketCategory.remaining_count }}</td>
+                <td>
+                  <button class="btn btn-primary" (click)="onOrderTicket(ticketCategory.id)">Đặt mua</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      
         </div>
+    </div>
+    <div class="container" id="organization-container">
+        <h2 class="text-center mt-4 mb-5">Ban tổ chức sự kiện: {{ organization?.name }}</h2>
     </div>
 </div>
 <app-footer></app-footer>
