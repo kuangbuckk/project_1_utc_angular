@@ -5,7 +5,13 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link link-dark" 
-                (click)="showAdminComponent('categories')"
+                routerLink="/"
+                routerLinkActive="active">
+                <i class="fas fa-house"></i> Trang chủ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-dark" 
                 routerLink="/admin/categories"
                 routerLinkActive="active">
                 <i class="fas fa-boxes"></i> Các loại sự kiện
@@ -13,7 +19,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link link-dark" 
-              (click)="showAdminComponent('products')"
               routerLinkActive="active">
               <i class="fab fa-codepen icon"></i>Sự kiện
             </a>
