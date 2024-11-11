@@ -13,9 +13,10 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/ticket-order-confirm.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AdminModule } from './components/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RegisterComponent,
     AppComponent,
     TicketOrderConfirmComponent,
-    AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [
     { 
