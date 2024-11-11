@@ -68,11 +68,16 @@ export class LoginComponent {
                 fullname: userResponse.fullname,
                 address: userResponse.address,
                 date_of_birth: userResponse.date_of_birth,
-                roles: userResponse.roles
+                role: userResponse.role
               };
-              alert(userResponse.fullname + ' logged in successfully');
+              alert(userResponse.fullname + 'đăng nhập thành công');
               this.userService.saveUserResponseToLocalStorage(this.userResponse);
-              this.router.navigate(['/']);
+              debugger
+              if (this.userResponse?.role.name === 'ADMIN'){
+                this.router.navigate(['/admin']);
+              } else if (this.userResponse?.role.name === 'USER'){
+                this.router.navigate(['/']);
+              }
             },
             complete: () => {
               //xử lý khi request hoàn thành

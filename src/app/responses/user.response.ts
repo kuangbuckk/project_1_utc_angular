@@ -5,5 +5,5 @@ export interface UserResponse {
     fullname: string;
     address: string;
     date_of_birth: Date;
-    roles: Role;
+    role: Role;
 }

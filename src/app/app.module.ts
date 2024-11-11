@@ -7,13 +7,15 @@ import { DetailEventComponent } from './components/detail-event/detail-event.com
 import { TicketOrderComponent } from './components/ticket-order/ticket-order.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/ticket-order-confirm.component';
+import { DatePipe } from '@angular/common';
+import { AdminComponent } from './components/admin/admin.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/t
     LoginComponent,
     RegisterComponent,
     AppComponent,
-    TicketOrderConfirmComponent
+    TicketOrderConfirmComponent,
+    AdminComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -38,14 +42,11 @@ import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/t
       provide: HTTP_INTERCEPTORS, 
       useClass: TokenInterceptor, 
       multi: true 
-    }
+    },
+    DatePipe
   ],
   bootstrap: [
     AppComponent
-    // HomeComponent
-    // RegisterComponent
-    // LoginComponent
-    // DetailEventComponent
   ]
 })
 export class AppModule { }
