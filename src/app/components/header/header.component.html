@@ -16,9 +16,14 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <ng-container *ngIf="userResponse">
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
+                  <li class="nav-item" *ngIf="userResponse?.role?.name === 'ADMIN'; else notADMIN">
+                    <a class="nav-link" routerLink="/admin"><i class="fas fa-user-shield"></i> Quản lý dữ liệu</a>
                   </li>
+                  <ng-template #notADMIN>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
+                    </li>
+                  </ng-template>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ userResponse.fullname}}

@@ -72,12 +72,7 @@ export class LoginComponent {
               };
               alert(userResponse.fullname + 'đăng nhập thành công');
               this.userService.saveUserResponseToLocalStorage(this.userResponse);
-              debugger
-              if (this.userResponse?.role.name === 'ADMIN'){
-                this.router.navigate(['/admin']);
-              } else if (this.userResponse?.role.name === 'USER'){
-                this.router.navigate(['/']);
-              }
+              this.router.navigate(['/']);
             },
             complete: () => {
               //xử lý khi request hoàn thành
