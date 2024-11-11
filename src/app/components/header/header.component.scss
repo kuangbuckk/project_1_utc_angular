@@ -1,3 +1,15 @@
 .navbar {
     background-color: rgb(45, 194, 117);
 }
+
+.nav-item{
+    border: 2px white solid;
+    margin: 0 0.5rem;
+    border-radius: 10px;
+    padding: 0.3rem 0.6rem;
+}
+
+.nav-item:hover{
+    background-color: white;
+    color: rgb(45, 194, 117);
+}

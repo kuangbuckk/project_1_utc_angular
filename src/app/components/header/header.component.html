@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-          <a class="navbar-brand" href="/">Ticketbox</a>
+          <a class="navbar-brand" href="/"><i class="fas fa-ticket-alt"></i> Ticketbox</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -15,12 +15,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/my-cart">Giỏ hàng</a>
-              </li>
                 <ng-container *ngIf="userResponse">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
+                  </li>
                   <li class="nav-item dropdown">
-                    <a class="btn btn-primary nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ userResponse.fullname}}
                     </a>
                     <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
                 </ng-container>
                 <ng-container *ngIf="!userResponse">
                   <li class="nav-item">
-                    <a class="btn btn-primary nav-link" routerLink="/login">Đăng nhập | Đăng ký</a>
+                    <a class="nav-link" routerLink="/login">Đăng nhập | Đăng ký</a>
                   </li>
                 </ng-container>
             </ul>

@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { UserResponse } from './../../responses/user.response';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,8 @@ export class HeaderComponent implements OnInit {
   logOut(){
     this.userService.removeUserFromLocalStorage();
     this.tokenService.removeToken();
+    this.cartService.clearCart();
     this.userResponse = null;
+    alert('Đăng xuất thành công');
   }
 }
