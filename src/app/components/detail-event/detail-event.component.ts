@@ -8,6 +8,8 @@ import { Event } from '../../model/event';
 import { TicketCategory } from '../../model/ticket.category';
 import { OrganizationService } from '../../services/organization.service';
 import { Organization } from '../../model/organization';
+import { DatePipe } from '@angular/common';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-detail-event',
@@ -20,13 +22,17 @@ export class DetailEventComponent implements OnInit {
   currentImageIndex: number = 0;
   ticketCategories: TicketCategory[] = [];
   organization?: Organization;
+  formattedStartDate: string = 'sa';
+  formattedEndDate: string ='sa';
 
   constructor(
-    private route: Router, 
+    private router: Router, 
     private activatedRoute: ActivatedRoute,
     private eventService: EventService,
     private ticketCategoryService: TicketCategoryService,
-    private organizationService: OrganizationService) { }
+    private organizationService: OrganizationService,
+    private userService: UserService,
+    private datePipe: DatePipe) { }
 
   ngOnInit() {
     const idParam = this.activatedRoute.snapshot.paramMap.get('id');
@@ -43,6 +49,26 @@ export class DetailEventComponent implements OnInit {
               console.log(event_image);
             });
             this.event = event 
+            const startDate = new Date(
+              event.start_date[0], // year
+              event.start_date[1] - 1, // month (0-based)
+              event.start_date[2], // day
+              event.start_date[3], // hour
+              event.start_date[4] // minute
+            );
+        
+            // Convert end_date to Date object
+            const endDate = new Date(
+              event.end_date[0], // year
+              event.end_date[1] - 1, // month (0-based)
+              event.end_date[2], // day
+              event.end_date[3], // hour
+              event.end_date[4], // minute
+            );
+        
+            // Format the start and end dates using DatePipe
+            this.formattedStartDate = this.datePipe.transform(startDate, 'dd/MM/yyyy HH:mm') || '';
+            this.formattedEndDate = this.datePipe.transform(endDate, 'dd/MM/yyyy HH:mm') || '';
             // Bắt đầu với ảnh đầu tiên
             this.showImage(0);
           } 
@@ -105,6 +131,12 @@ export class DetailEventComponent implements OnInit {
   }      
 
   goToTicketCategoryDetail(ticketCategoryId: number){
-    this.route.navigate(['ticket-category', ticketCategoryId]);
+    let userResponse = this.userService.getUserResponseFromLocalStorage();
+    if (!userResponse) {
+      alert('Vui lòng đăng nhập trước khi mua vé!');
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['ticket-category', ticketCategoryId]);
+    }
   }
 }
