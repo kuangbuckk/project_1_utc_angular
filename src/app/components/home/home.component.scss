@@ -18,3 +18,16 @@
     display: inline-block;
     max-width: 100%;
 }
+
+.category-item {
+    text-align: center;
+    padding: 0.3rem;
+    cursor: pointer;
+    border: 1px white solid;
+    border-radius: 10px;
+}
+
+.category-item:hover {
+    background-color: white;
+    color: rgb(45, 194, 117);
+}

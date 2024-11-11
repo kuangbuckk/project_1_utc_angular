@@ -31,9 +31,10 @@ export class HomeComponent {
     this.getCategories();
   }
 
+  //trả về danh sách các Category từ Observable và gán vào biến categories -> sau đó hiện lên HTML
   getCategories() {
     this.categoryService.getCategories().subscribe({
-      next: (categories: any) => {
+      next: (categories: Category[]) => {
         debugger;
         this.categories = categories;
       },
@@ -46,6 +47,8 @@ export class HomeComponent {
     });
   }
 
+  /*trả về danh sách các Event từ Observable và gán vào biến events, response bao gồm cả totalPages 
+  chứ ko chỉ mỗi Event nên phải là response chứ ko để như Category ở trên được -> sau đó hiện lên HTML*/
   getEvents(page: number, itemsPerPage: number) {
     this.eventService.getEvents(page, itemsPerPage).subscribe({
       next: (response: any) => {
@@ -64,6 +67,7 @@ export class HomeComponent {
       }
     })
   }
+  
   
   searchEvents() {
     this.eventService.searchEventByKeyword(this.keyword, this.currentPage, this.itemsPerPage).subscribe({
