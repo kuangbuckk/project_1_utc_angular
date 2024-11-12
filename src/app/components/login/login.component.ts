@@ -70,7 +70,7 @@ export class LoginComponent {
                 date_of_birth: userResponse.date_of_birth,
                 role: userResponse.role
               };
-              alert(userResponse.fullname + 'đăng nhập thành công');
+              alert(userResponse.fullname + ' đăng nhập thành công');
               this.userService.saveUserResponseToLocalStorage(this.userResponse);
               this.router.navigate(['/']);
             },

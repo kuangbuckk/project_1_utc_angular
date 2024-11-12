@@ -8,6 +8,9 @@ import { CategoriesUpdateAdminComponent } from "./categories/update/categories-u
 import { OrganizationsComponent } from "./organizations/organizations.component";
 import { OrganizationInsertAdminComponent } from "./organizations/insert/organization-insert-admin.component";
 import { OrganizationUpdateAdminComponent } from "./organizations/update/organization-update-admin.component";
+import { EventsAdminComponent } from "./events/events-admin.component";
+import { EventsInsertAdminComponent } from "./events/insert/events-insert-admin.component";
+import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.component";
 
 const routes: Routes = [
     //Admin
@@ -17,12 +20,15 @@ const routes: Routes = [
         children: [
             {path: 'categories', component: CategoriesAdminComponent},
             {path: 'organizations', component: OrganizationsComponent},
+            {path: 'events', component: EventsAdminComponent},
 
             //actions
             {path: 'categories/insert', component: CategoriesInsertAdminComponent},
             {path: 'categories/edit/:id', component: CategoriesUpdateAdminComponent},
             {path: 'organizations/insert', component: OrganizationInsertAdminComponent},
             {path: 'organizations/edit/:id', component: OrganizationUpdateAdminComponent},
+            {path: 'events/insert', component: EventsInsertAdminComponent},
+            {path: 'events/edit/:id', component: EventsUpdateAdminComponent},
         ]
     },
 ];

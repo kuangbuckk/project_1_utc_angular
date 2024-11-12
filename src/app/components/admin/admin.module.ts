@@ -9,7 +9,9 @@ import { CategoriesUpdateAdminComponent } from "./categories/update/categories-u
 import { OrganizationsComponent } from "./organizations/organizations.component";
 import { OrganizationInsertAdminComponent } from "./organizations/insert/organization-insert-admin.component";
 import { OrganizationUpdateAdminComponent } from "./organizations/update/organization-update-admin.component";
-
+import { EventsAdminComponent } from "./events/events-admin.component";
+import { EventsInsertAdminComponent } from "./events/insert/events-insert-admin.component";
+import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.component";
 
 @NgModule({
     declarations: [
@@ -20,6 +22,9 @@ import { OrganizationUpdateAdminComponent } from "./organizations/update/organiz
         OrganizationsComponent,
         OrganizationInsertAdminComponent,
         OrganizationUpdateAdminComponent,
+        EventsAdminComponent,
+        EventsInsertAdminComponent,
+        EventsUpdateAdminComponent,
     ],
     imports: [
         AdminRoutingModule,

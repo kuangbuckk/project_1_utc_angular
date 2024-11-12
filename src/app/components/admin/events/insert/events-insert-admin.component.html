@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Thêm sự kiện</h3>
+            <div class="row mb-3">
+                <form (ngSubmit)="insertEvent()">
+                    <div class="form-group mb-3">
+                        <label for="name">Tên: </label>
+                        <input type="text" id="name" [(ngModel)]="insertEventDTO.name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description">Mô tả: </label>
+                        <input type="text" id="description" [(ngModel)]="insertEventDTO.description" name="description" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="location">Địa điểm tổ chức: </label>
+                        <input type="text" id="location" [(ngModel)]="insertEventDTO.location" name="location" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="start-date">Thời gian bắt đầu: </label>
+                        <input type="datetime-local" id="start-date" [(ngModel)]="insertEventDTO.start_date" name="start-date" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="end-date">Thời gian kết thúc: </label>
+                        <input type="datetime-local" id="end-date" [(ngModel)]="insertEventDTO.end_date" name="end-date" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="category">Thể loại sự kiện: </label>
+                        <select id="category" [(ngModel)]="insertEventDTO.category_id" name="category" class="form-control" required>
+                            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="organization">Thuộc ban tổ chức: </label>
+                        <select id="organization" [(ngModel)]="insertEventDTO.organization_id" name="organization" class="form-control" required>
+                            <option *ngFor="let organization of organizations" [value]="organization.id">{{ organization.name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <h5>Ảnh đầu tiên sẽ là thumbnail của sự kiện</h5>
+                        <label for="files">Tải ảnh sự kiện: </label>
+                        <input type="file" id="files" (change)="onFileChange($event)" multiple class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

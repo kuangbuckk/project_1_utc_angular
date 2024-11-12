@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../enviroments/enviroment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { EventDTO } from '../dtos/event/event.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,21 @@ export class EventService {
       .set('limit', itemsPerPage.toString());
 
     return this.http.get<Event[]>(`${this.apiGetEvents}/search`, { params });
+  }
+
+  insertEvent(eventDTO: EventDTO): Observable<any> {
+    return this.http.post(this.apiGetEvents, eventDTO);
+  }
+
+  updateEvent(eventId: number, eventDTO: EventDTO): Observable<any> {
+    return this.http.put(`${this.apiGetEvents}/${eventId}`, eventDTO);
+  }
+
+  deleteEvent(id: number): Observable<any> {
+    return this.http.delete(`${this.apiGetEvents}/${id}`);
+  }
+
+  uploadEventImages(eventId: number, formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiGetEvents}/uploads/${eventId}`, formData);
   }
 }
