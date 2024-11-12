@@ -1,0 +1,21 @@
+<h1>Quản lý các ban tổ chức</h1>
+<button class="btn btn-success mb-2" (click)="insertOrganization()">Thêm ban tổ chức</button>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên ban tổ chức</th>
+            <th scope="col">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let organization of organizations">
+            <th scope="row">{{ organization.id }}</th>
+            <td>{{ organization.name }}</td>
+            <td>
+                <button class="btn btn-primary" (click)="editOrganization(organization.id)">Sửa</button>
+                <button class="btn btn-danger" (click)="deleteOrganization(organization.id)">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

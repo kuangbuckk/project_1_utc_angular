@@ -6,13 +6,20 @@ import { CategoriesAdminComponent } from "./categories/categories.admin.componen
 import { CategoriesInsertAdminComponent } from "./categories/insert/categories-insert-admin.component";
 import { FormsModule } from "@angular/forms";
 import { CategoriesUpdateAdminComponent } from "./categories/update/categories-update-admin.component";
+import { OrganizationsComponent } from "./organizations/organizations.component";
+import { OrganizationInsertAdminComponent } from "./organizations/insert/organization-insert-admin.component";
+import { OrganizationUpdateAdminComponent } from "./organizations/update/organization-update-admin.component";
+
 
 @NgModule({
     declarations: [
         AdminComponent,
         CategoriesAdminComponent,
         CategoriesInsertAdminComponent,
-        CategoriesUpdateAdminComponent
+        CategoriesUpdateAdminComponent,
+        OrganizationsComponent,
+        OrganizationInsertAdminComponent,
+        OrganizationUpdateAdminComponent,
     ],
     imports: [
         AdminRoutingModule,

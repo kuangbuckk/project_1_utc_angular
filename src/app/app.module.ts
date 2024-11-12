@@ -30,6 +30,7 @@ import { AdminModule } from './components/admin/admin.module';
     AppComponent,
     TicketOrderConfirmComponent,
     PageNotFoundComponent,
+
   ],
   imports: [
     CommonModule,
