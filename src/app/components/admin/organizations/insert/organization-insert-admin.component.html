@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Thêm ban tổ chức</h3>
+        <div class="row mb-3">
+          <form (ngSubmit)="insertOrganization()">
+            <div class="form-group mb-3">
+              <label for="name">Tên: </label>
+              <input type="text" id="name" [(ngModel)]="insertOrganizationDTO.name" 
+              name="name" class="form-control" required>
+            </div>              
+            <button type="submit" class="btn btn-primary">Thêm</button>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
