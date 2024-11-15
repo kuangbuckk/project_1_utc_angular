@@ -10,6 +10,7 @@
             <th scope="col">Thời gian tổ chức</th>
             <th scope="col">Loại sự kiện</th>
             <th scope="col">Bên tổ chức</th>
+            <th scope="col">Quản lý vé</th>
             <th scope="col">Hành động</th>
         </tr>
     </thead>
@@ -21,6 +22,9 @@
             <td>{{ event.start_date }} - {{ event.end_date }}</td>
             <td>{{ event.category_name }}</td>
             <td>{{ event.organization_name }}</td>
+            <td>
+              <button class="btn btn-success" (click)="editEvent(event.id)">Quản lý vé</button>
+            </td>
             <td>
                 <button class="btn btn-primary" (click)="editEvent(event.id)">Sửa</button>
                 <button class="btn btn-danger" (click)="deleteEvent(event.id)">Xóa</button>
