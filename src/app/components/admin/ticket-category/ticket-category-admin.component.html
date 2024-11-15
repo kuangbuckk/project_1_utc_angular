@@ -1,0 +1,25 @@
+<h1>Quản lý loại vé</h1>
+<button class="btn btn-success mb-2" (click)="insertTicketCategory()">Thêm loại vé cho sự kiện</button>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên loại vé</th>
+            <th scope="col">Gía tiền</th>
+            <th scope="col">Số vé còn lại</th>
+            <th scope="col">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ticketCategory of ticketCategories">
+            <th scope="row">{{ ticketCategory.id }}</th>
+            <th scope="row">{{ ticketCategory.category_name }}</th>
+            <th scope="row">{{ ticketCategory.price }}</th>
+            <th scope="row">{{ ticketCategory.remaining_count }}</th>
+            <td>
+                <button class="btn btn-primary" (click)="editTicketCategory(ticketCategory.id)">Sửa</button>
+                <button class="btn btn-danger" (click)="deleteTicketCategory(ticketCategory.id)">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

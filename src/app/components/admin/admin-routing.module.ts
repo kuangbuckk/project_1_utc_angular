@@ -11,6 +11,7 @@ import { OrganizationUpdateAdminComponent } from "./organizations/update/organiz
 import { EventsAdminComponent } from "./events/events-admin.component";
 import { EventsInsertAdminComponent } from "./events/insert/events-insert-admin.component";
 import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.component";
+import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-admin.component";
 
 const routes: Routes = [
     //Admin
@@ -21,6 +22,7 @@ const routes: Routes = [
             {path: 'categories', component: CategoriesAdminComponent},
             {path: 'organizations', component: OrganizationsComponent},
             {path: 'events', component: EventsAdminComponent},
+            {path: 'events/:id/ticket-categories', component: TicketCategoryAdminComponent},
 
             //actions
             {path: 'categories/insert', component: CategoriesInsertAdminComponent},

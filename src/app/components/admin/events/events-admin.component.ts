@@ -29,6 +29,7 @@ export class EventsAdminComponent {
   getEvents(page: number, itemsPerPage: number) {
     this.eventService.getEvents(page, itemsPerPage).subscribe({
       next: (response: any) => {
+        debugger
         this.events = response.events;
         this.totalPages = response.totalPages;
         this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
@@ -85,5 +86,9 @@ export class EventsAdminComponent {
         console.error('Error deleting event:', error);
       }
     });
+  }
+
+  manageTicketCategories(eventId: number) {
+    this.router.navigate([`/admin/events/${eventId}/ticket-categories`]);
   }
 }
