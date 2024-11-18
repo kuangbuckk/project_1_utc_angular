@@ -17,7 +17,7 @@
             <th scope="row">{{ ticketCategory.price }}</th>
             <th scope="row">{{ ticketCategory.remaining_count }}</th>
             <td>
-                <button class="btn btn-primary" (click)="editTicketCategory(ticketCategory.id)">Sửa</button>
+                <button class="btn btn-primary" (click)="editTicketCategory(ticketCategory.id, eventId)">Sửa</button>
                 <button class="btn btn-danger" (click)="deleteTicketCategory(ticketCategory.id)">Xóa</button>
             </td>
         </tr>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TicketCategoryDTO } from '../../../../dtos/ticket-category/ticket-category.dto';
+import { TicketCategoryDTO } from '../../../../dtos/ticket-category/ticket.category.dto';
 import { Router } from '@angular/router';
 import { TicketCategoryService } from '../../../../services/ticket.category.service';
 
@@ -14,7 +14,7 @@ export class TicketCategoryInsertAdminComponent {
     ticket_category_name: '',
     price: 0,
     remaining_count: 0,
-    eventId: 0,   
+    eventId: 0,    
   };
 
   constructor(
