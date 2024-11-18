@@ -1,3 +1,4 @@
+import { Ticket } from './../../model/ticket';
 import { NgModule } from "@angular/core";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { CommonModule } from "@angular/common";
@@ -13,6 +14,8 @@ import { EventsAdminComponent } from "./events/events-admin.component";
 import { EventsInsertAdminComponent } from "./events/insert/events-insert-admin.component";
 import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.component";
 import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-admin.component";
+import { TicketCategoryInsertAdminComponent } from "./ticket-category/insert/ticket-category-insert-admin.component";
+import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/ticket-category-update-admin.component";
 
 @NgModule({
     declarations: [
@@ -27,6 +30,8 @@ import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-
         EventsInsertAdminComponent,
         EventsUpdateAdminComponent,
         TicketCategoryAdminComponent,
+        TicketCategoryInsertAdminComponent,
+        TicketCategoryUpdateAdminComponent
     ],
     imports: [
         AdminRoutingModule,

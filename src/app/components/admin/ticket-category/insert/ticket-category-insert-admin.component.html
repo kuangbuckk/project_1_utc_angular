@@ -1,36 +1,29 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h3>Thêm loại vé</h3>
-        <div class="row mb-3">
-          <form (ngSubmit)="insertTicketCategory()">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h3>Thêm loại vé</h3>
+      <div class="row mb-3">
+        <form (ngSubmit)="insertTicketCategory()">
+          <div class="form-group mb-3">
             <div class="form-group mb-3">
-                    
-
-            <div class="form-group mb-3">
-                <label for="ticket_category_name">Tên loại vé: </label>
-                <input type="text" id="ticket_category_name" [(ngModel)]="insertTicketCategoryDTO.ticket_category_name" 
+              <label for="ticket_category_name">Tên loại vé: </label>
+              <input type="text" id="ticket_category_name" [(ngModel)]="insertTicketCategoryDTO.category_name"
                 name="ticket_category_name" class="form-control" required>
-              </div>           
-
-            <div class="form-group mb-3">
-            <label for="price">Giá tiền: </label>
-            <input type="text" id="price" [(ngModel)]="insertTicketCategoryDTO.price" 
-            name="price" class="form-control" required>
             </div>
-            
             <div class="form-group mb-3">
-                <label for="remaining_count">Số vé còn lại: </label>
-                <input type="text" id="remaining_count" [(ngModel)]="insertTicketCategoryDTO.remaining_count" 
+              <label for="price">Giá tiền: </label>
+              <input type="text" id="price" [(ngModel)]="insertTicketCategoryDTO.price" name="price"
+                class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+              <label for="remaining_count">Số lượng vé bán: </label>
+              <input type="text" id="remaining_count" [(ngModel)]="insertTicketCategoryDTO.remaining_count"
                 name="remaining_count" class="form-control" required>
-              </div>
-              
-        
-              </div>          
-            <button type="submit" class="btn btn-primary">Thêm</button>
-          </form>
-        </div>        
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
       </div>
     </div>
   </div>
-
+</div>

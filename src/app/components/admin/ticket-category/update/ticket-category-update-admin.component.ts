@@ -1,58 +1,65 @@
 import { Component } from '@angular/core';
-import { TicketCategory } from '../../../model/ticket.category';
-import { TicketCategoryService } from '../../../services/ticket.category.service';
-import { Router } from '@angular/router';
+import { TicketCategoryService } from '../../../../services/ticket.category.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { TicketCategoryDTO } from '../../../../dtos/ticket-category/ticket.category.dto';
 
 @Component({
-  selector: 'app-organizations',
-  templateUrl: './organizations.component.html',
-  styleUrls: ['./organizations.component.scss']
+  selector: 'app-ticket-category-update-admin',
+  templateUrl: './ticket-category-update-admin.component.html',
+  styleUrls: ['./ticket-category-update-admin.component.scss']
 })
-export class OrganizationsComponent {
-  ticketCategories: TicketCategory[] = [];
+
+export class TicketCategoryUpdateAdminComponent {
+  updateTicketCategoryDTO: TicketCategoryDTO = { 
+    category_name: '',
+    price: 0,
+    remaining_count: 0,
+    event_id: 0,
+  }
+  ticketCategoryId: number = 0;
+
   constructor(
-    private ticketCategories: TicketCategory,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private ticketCategoryService: TicketCategoryService,
   ) { }
 
   ngOnInit(): void {
-    this.ticketCategories();
+    const ticketCategoryIdParam = this.activatedRoute.snapshot.paramMap.get('ticketCategoryId');
+    if (ticketCategoryIdParam) {
+      this.ticketCategoryId = parseInt(ticketCategoryIdParam, 10);
+      debugger
+      this.getTicketCategoryById(this.ticketCategoryId);
+    }
   }
 
-  getTicketCategories() {
-    this.ticketCategories.getTicketCategories().subscribe({
-      next: (ticketCategories: TicketCategory[]) => {
-        this.ticketCategories = ticketCategories;
-        debugger; 
+  getTicketCategoryById(ticketCategoryId: number) {
+    this.ticketCategoryService.getTicketCategoryById(ticketCategoryId).subscribe({
+      next: (response: any) => {
+        this.updateTicketCategoryDTO = response;
       },
       complete: () => {
-        debugger;
+        
       },
       error: (error: any) => {
-        console.error('Error fetching ticketCategories:', error);
+        console.log('error: ', error);
       }
-    });
+    })
   }
 
-  insertTicketCategory(eventId: number) {
-    this.router.navigate(['/admin/organizations/insert']);
-  }
-
-  editOrganization(id: number) {
-    this.router.navigate(['/admin/organizations/edit', id]);
-  }
-
-  deleteOrganization(id: number) {
-    this.ticketCategoriesService.deleteOrganization(id).subscribe({
+  updateTicketCategory(): void {
+    this.updateTicketCategoryDTO.event_id = parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '0', 10);
+    this.ticketCategoryService.updateTicketCategory(this.ticketCategoryId, this.updateTicketCategoryDTO).subscribe({
       next: (response: any) => {
         
       },
       complete: () => {
-        alert('Delete organization successfully');
-        this.router.navigate(['/admin/organizations']);
+        alert('Cập nhật loại vé thành công');
+        this.router.navigate(['/admin/events']);
       },
       error: (error: any) => {
-        console.error('Error deleting organization:', error);
+        debugger
+        alert('Cập nhật loại vé thất bại: ' + error.error.message);
       }
     });
   }
