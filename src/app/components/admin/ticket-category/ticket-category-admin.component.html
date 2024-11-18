@@ -1,5 +1,5 @@
 <h1>Quản lý loại vé</h1>
-<button class="btn btn-success mb-2" (click)="insertTicketCategory()">Thêm loại vé cho sự kiện</button>
+<button class="btn btn-success mb-2" (click)="insertTicketCategory(eventId)">Thêm loại vé cho sự kiện</button>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,7 +13,7 @@
     <tbody>
         <tr *ngFor="let ticketCategory of ticketCategories">
             <th scope="row">{{ ticketCategory.id }}</th>
-            <th scope="row">{{ ticketCategory.category_name }}</th>
+            <th scope="row">{{ ticketCategory.ticket_category_name }}</th>
             <th scope="row">{{ ticketCategory.price }}</th>
             <th scope="row">{{ ticketCategory.remaining_count }}</th>
             <td>

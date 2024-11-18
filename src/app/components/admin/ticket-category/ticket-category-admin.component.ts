@@ -41,7 +41,11 @@ export class TicketCategoryAdminComponent {
     })
   }
 
-  insertTicketCategory() {}
-  editTicketCategory(ticketCategoryId: number) {}
+  insertTicketCategory(eventId: number) {
+    this.router.navigate(['/admin/events/${eventId}/ticket-category/insert'])
+  }
+  editTicketCategory(ticketCategoryId: number) {
+    this.router.navigate(['/admin/events/${eventId}/ticket-category/edit', ticketCategoryId])
+  }
   deleteTicketCategory(ticketCategoryId: number) {}
 }

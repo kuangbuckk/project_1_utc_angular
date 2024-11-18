@@ -1,6 +1,6 @@
 export interface TicketCategory {
     id: number;
-    category_name: string;
+    ticket_category_name: string;
     price: number;
     remaining_count: number;
 }

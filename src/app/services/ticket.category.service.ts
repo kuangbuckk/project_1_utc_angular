@@ -11,6 +11,7 @@ export class TicketCategoryService {
     private apiGetTicketCategories = `${environment.apiBaseUrl}/ticketCategories/events`
     private apiGetTicketCategoriesById = `${environment.apiBaseUrl}/ticketCategories`
     private apiGetTicketCategoriesByIds = `${environment.apiBaseUrl}/ticketCategories/by-ids`
+  insertTicketCategory: any;
 
     constructor(private http: HttpClient) { }
     getTicketCategoriesByEventId(eventId: number):Observable<TicketCategory[]>{
@@ -26,3 +27,5 @@ export class TicketCategoryService {
         return this.http.get<TicketCategory[]>(`${this.apiGetTicketCategoriesByIds}`, {params})
     }
 }
+
+export { TicketCategory };
