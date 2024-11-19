@@ -10,6 +10,7 @@ import { TicketCategory } from '../../../model/ticket.category';
 })
 export class TicketCategoryAdminComponent {
   eventId: number = 0;
+  foo: string = 'bar';
   ticketCategories: TicketCategory[] = [];
 
   constructor(
