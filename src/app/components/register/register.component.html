@@ -15,7 +15,7 @@
                             class="form-control" 
                             id="email">
                         <div class="divide-nospace"></div>
-                        <p class="text-danger" 
+                        <p class="text-danger" id="email-text-danger"
                             *ngIf="email.length === 0 && registerForm.form.touched">Email không được bỏ trống</p>
                     </div>
                     <div class="mt-3"></div>
@@ -40,7 +40,7 @@
                             id="password">
                         <i class="pasword-toggle fas fa-eye-slash"></i>
                         <div class="divide-nospace"></div>
-                        <p class="text-danger" 
+                        <p class="text-danger" id="password-text-danger"
                             *ngIf="password.length < 3 && registerForm.form.touched">Password ít nhất 3 ký tự</p>
                     </div>
                     <div class="mt-3"></div>
@@ -54,7 +54,7 @@
                             id="retype-password">
                         <i class="pasword-toggle fas fa-eye-slash"></i>
                         <div class="divide-nospace"></div>
-                        <p class="text-danger" 
+                        <p class="text-danger" id="repassword-text-danger"
                             *ngIf="retypePassword.length < 3 && registerForm.form.touched">Xác nhận password ít nhất 3 ký tự</p>
                     </div>
                     <div class="mt-3"></div>
@@ -100,7 +100,7 @@
                     <div class="mt-2"></div>
                     <button type="button" 
                         (click)="register()"
-                        class="register-button">Đăng ký</button>
+                        class="register-button" id="register-button-2">Đăng ký</button>
                     <div class="divider"></div>
                     <p class="text-center">Bạn đã có tài khoản? <span>
                             <a class="login-link" routerLink="/login">Đăng nhập</a>
