@@ -92,11 +92,11 @@ export class TicketOrderConfirmComponent {
     this.router.navigate(['/']);
   }
 
-  makePayment(amount: any) {
+  async makePayment() {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: this.stripeAPIKey,
       locale: 'auto',
-      token: (stripeToken: any) => { 
+      token: async (stripeToken: any) => {
         const paymentDetails = {
           tokenId: stripeToken.id,
           email: stripeToken.email,
@@ -109,15 +109,10 @@ export class TicketOrderConfirmComponent {
           },
         };
         console.log('Payment successful!', paymentDetails);
-        alert(`Payment successful! 
-          Token ID: ${paymentDetails.tokenId}
-          Email: ${paymentDetails.email}
-          Date: ${paymentDetails.created}
-          Card: ${paymentDetails.card.brand} ending in ${paymentDetails.card.last4}
-          Expiry: ${paymentDetails.card.expMonth}/${paymentDetails.card.expYear}`);
-        this.clearCart(false);
+        await this.makeOrder();
       },
     });
+  
     paymentHandler.open({
       name: 'Team 08',
       description: 'make the payment for the tickets',
@@ -137,7 +132,7 @@ export class TicketOrderConfirmComponent {
   async makeOrder() {
     this.ticketOrderDTO.total_money = this.totalAmount;
     this.ticketOrderDTO.user_id = this.tokenService.getUserId();
-
+    this.ticketOrderDTO.payment_method = 'stripe';
     try {
       const response = await this.ticketOrderService.insertTicketOrder(this.ticketOrderDTO).toPromise();
       if (response) {

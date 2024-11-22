@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-lg-6">
             <h2>Thông tin đơn đặt vé</h2>
-            <form (ngSubmit)="makeOrder()">
+            <form>
                 <fieldset>
-                  <button type="submit" (click)="makePayment(15)" class="btn btn-primary">Xác nhận thanh toán</button>
+                  <button type="submit" (click)="makePayment()" class="btn btn-primary">Xác nhận thanh toán</button>
                   <button class="btn btn-secondary" style="margin-left: 1.5rem;" (click)="clearCart(true)">Huỷ giỏ hàng</button>
                 </fieldset>
             </form>
