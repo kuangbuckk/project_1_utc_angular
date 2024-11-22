@@ -32,6 +32,8 @@ export class TicketOrderConfirmComponent {
 
   couponCode: string = ''; // Mã giảm giá
   totalAmount: number = 0; // Tổng tiền
+  paymentHandler: any = null;
+  stripeAPIKey: any = 'pk_test_51QNppgG8KniinZDBIB2WnY3pPnzWSl6LnnkO3FixNj56frMRs6ccuVxyMdzdhiMUX21AWJfFmftpCm8PNYAgKZt800ziZJ0Hiu';
 
   constructor(
     private cartService: CartService,
@@ -71,9 +73,10 @@ export class TicketOrderConfirmComponent {
         debugger;
         console.error('Error fetching detail:', error);
       }
-    });        
+    });       
+    this.invokeStripe() 
   }
-  // Hàm tính tổng tiền
+
   calculateTotal(): void {
       this.totalAmount = this.cartItems.reduce(
           (total, item) => total + item.ticketCategory.price * item.quantity,
@@ -81,15 +84,55 @@ export class TicketOrderConfirmComponent {
       );
   }
 
-  clearCart() {
+  clearCart(showAlert: boolean = true) {
     this.cartService.clearCart();
+    if (showAlert) {
+      alert('Đã xóa giỏ hàng');
+    }
     this.router.navigate(['/']);
   }
 
+  async makePayment() {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: this.stripeAPIKey,
+      locale: 'auto',
+      token: async (stripeToken: any) => {
+        const paymentDetails = {
+          tokenId: stripeToken.id,
+          email: stripeToken.email,
+          created: new Date(stripeToken.created * 1000).toLocaleString(),
+          card: {
+            brand: stripeToken.card.brand,
+            last4: stripeToken.card.last4,
+            expMonth: stripeToken.card.exp_month,
+            expYear: stripeToken.card.exp_year,
+          },
+        };
+        console.log('Payment successful!', paymentDetails);
+        await this.makeOrder();
+      },
+    });
+  
+    paymentHandler.open({
+      name: 'Team 08',
+      description: 'make the payment for the tickets',
+      amount: (this.totalAmount / 25000) * 100,
+    });
+  }
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      window.document.body.appendChild(script);
+    }
+  }
   async makeOrder() {
     this.ticketOrderDTO.total_money = this.totalAmount;
     this.ticketOrderDTO.user_id = this.tokenService.getUserId();
-
+    this.ticketOrderDTO.payment_method = 'stripe';
     try {
       const response = await this.ticketOrderService.insertTicketOrder(this.ticketOrderDTO).toPromise();
       if (response) {
