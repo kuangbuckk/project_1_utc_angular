@@ -40,16 +40,21 @@ export class TicketOrderComponent implements OnInit{
   }
 
   addToCart(): void {
-    debugger
     this.isPressedAddToCart = true;
-    if (this.ticketCategory) {
-      this.cartService.addToCart(this.ticketCategory.id, this.quantity);
-      alert('Thêm sản phẩm vào giỏ hàng thành công.');
-      this.router.navigate(['/my-cart']);
+    if(this.ticketCategory && this.ticketCategory.remaining_count < this.quantity){ 
+      alert('Số lượng vé còn lại không đủ');
+      return;
     } else {
-      // Xử lý khi product là null
-      console.error('Không thể thêm sản phẩm vào giỏ hàng vì product là null.');
+      if (this.ticketCategory) {
+        this.cartService.addToCart(this.ticketCategory.id, this.quantity);
+        alert('Thêm sản phẩm vào giỏ hàng thành công.');
+        this.router.navigate(['/my-cart']);
+      } else {
+        // Xử lý khi product là null
+        console.error('Không thể thêm sản phẩm vào giỏ hàng vì product là null.');
+      }
     }
+    debugger
   }
   
   increaseQuantity(): void {
