@@ -1,0 +1,15 @@
+.btn-success {
+    background-color: purple; /* Màu nền tím */
+    color: white;            /* Màu chữ trắng */
+    border: none;            /* Bỏ viền nếu cần */
+    padding: 10px 15px;      /* Khoảng cách bên trong nút */
+    border-radius: 5px;      /* Bo góc nhẹ */
+    font-size: 16px;         /* Cỡ chữ */
+    cursor: pointer;         /* Con trỏ chuột hiển thị dạng tay */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu khi hover */
+  }
+  
+  .btn-success:hover {
+    background-color: darkviolet; /* Màu nền khi hover */
+  }
+  

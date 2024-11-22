@@ -15,11 +15,12 @@ import { TicketOrderDetailDTO } from '../../dtos/ticket-order-detail/ticket.orde
 import { TicketOrderDetailService } from '../../services/ticket.order.detail.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-ticket-order-confirm',
   templateUrl: './ticket-order-confirm.component.html',
-  styleUrls: ['./ticket-order-confirm.component.scss']
+  styleUrls: ['./ticket-order-confirm.component.scss'],
 })
 
 export class TicketOrderConfirmComponent {
