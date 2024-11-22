@@ -10,7 +10,7 @@
             <th scope="col">Hành động</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="ticketCategories && ticketCategories.length > 0; else noTicketCategories">
         <tr *ngFor="let ticketCategory of ticketCategories">
             <th scope="row">{{ ticketCategory.id }}</th>
             <th scope="row">{{ ticketCategory.category_name }}</th>
@@ -22,6 +22,12 @@
             </td>
         </tr>
     </tbody>
+    
+    <ng-template #noTicketCategories>
+        <tr>
+            <td colspan="5" class="text-center">Chưa có có loại vé nào cho sự kiện này.</td>
+        </tr>
+    </ng-template>
 </table>
 
 <div class="mt-5">
@@ -37,7 +43,7 @@
                 <th scope="col">ID người mua</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="tickets && tickets.length > 0; else noTickets">
             <tr *ngFor="let ticket of tickets">
                 <th scope="row">{{ ticket.id }}</th>
                 <th scope="row">{{ ticket.ticket_category_name }}</th>
@@ -54,5 +60,10 @@
                 <td>{{ ticket.user_id }}</td>
             </tr>
         </tbody>
+        <ng-template #noTickets>
+            <tr>
+                <td colspan="5" class="text-center">Chưa có ai đặt mua vé ☺.</td>
+            </tr>
+        </ng-template>
     </table>    
 </div>

@@ -8,7 +8,7 @@
             <th scope="col">Hành động</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="organizations && organizations.length > 0; else noOrgs">
         <tr *ngFor="let organization of organizations">
             <th scope="row">{{ organization.id }}</th>
             <td>{{ organization.name }}</td>
@@ -18,4 +18,9 @@
             </td>
         </tr>
     </tbody>
+    <ng-template #noOrgs>
+        <tr>
+            <td colspan="3" class="text-center">Chưa có ban tổ chức sự kiện nào.</td>
+        </tr>
+    </ng-template>
 </table>

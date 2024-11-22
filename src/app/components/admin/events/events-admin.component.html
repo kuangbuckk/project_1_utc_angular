@@ -1,11 +1,11 @@
-<h1>Quản lý loại sự kiện</h1>
-<button class="btn btn-success mb-2" (click)="insertEvent()">Thêm loại sự kiện</button>
+<h1>Quản lý các sự kiện</h1>
+<button class="btn btn-success mb-2" (click)="insertEvent()">Thêm sự kiện</button>
 <div>
 <table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tên loại sự kiện</th>
+            <th scope="col">Thuộc loại sự kiện</th>
             <th scope="col">Địa điểm tổ chức</th>
             <th scope="col">Thời gian tổ chức</th>
             <th scope="col">Loại sự kiện</th>
@@ -14,7 +14,7 @@
             <th scope="col">Hành động</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="events && events.length > 0; else noEvents">
         <tr *ngFor="let event of events">
             <th scope="row">{{ event.id }}</th>
             <td>{{ event.name }}</td>
@@ -31,6 +31,11 @@
             </td>
         </tr>
     </tbody>
+    <ng-template #noEvents>
+        <tr>
+            <td colspan="8" class="text-center">Chưa có sự kiện nào.</td>
+        </tr>
+    </ng-template>
 </table>
 <div class="d-flex justify-content-center">
     <nav aria-label="Page navigation">

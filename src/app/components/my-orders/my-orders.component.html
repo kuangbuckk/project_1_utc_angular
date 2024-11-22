@@ -11,21 +11,27 @@
                                 <th scope="col">Mã đơn hàng</th>
                                 <th scope="col">Số lượng vé mua</th>
                                 <th scope="col">Tổng tiền</th>
-                                <!-- <th scope="col">Trạng thái</th>-->
                                 <th scope="col">Hành động</th> 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngIf="ticketOrderDetails && ticketOrderDetails.length > 0; else noTicketOrderDetail">
                             <tr *ngFor="let ticketOrderDetail of ticketOrderDetails">
                                 <td>{{ ticketOrderDetail.id }}</td>
                                 <td>{{ ticketOrderDetail.number_of_tickets }}</td>
                                 <td>{{ ticketOrderDetail.total_money | currency: 'VND' }}</td>
-                                <!-- <td>{{ ticketOrderDetail.status }}</td> -->
                                 <td>
                                     <a class="btn btn-success" [routerLink]="['/my-order', ticketOrderDetail.id]">Xem chi tiết</a>
                                 </td>
                             </tr>
                         </tbody>
+                        <ng-template #noTicketOrderDetail>
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    <img src="../../../assets/photos/empty-box-removebg-preview.png" alt="">
+                                    <p>Bạn chưa có đơn hàng nào.</p>
+                                </td>
+                            </tr>
+                        </ng-template>
                     </table>
                 </div>
             </div>

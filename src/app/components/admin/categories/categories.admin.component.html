@@ -8,7 +8,7 @@
             <th scope="col">Hành động</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="categories && categories.length > 0; else noCategories">
         <tr *ngFor="let category of categories">
             <th scope="row">{{ category.id }}</th>
             <td>{{ category.name }}</td>
@@ -18,4 +18,9 @@
             </td>
         </tr>
     </tbody>
+    <ng-template #noCategories>
+        <tr>
+            <td colspan="3" class="text-center">Chưa có loại sự kiện nào.</td>
+        </tr>
+    </ng-template>
 </table>
