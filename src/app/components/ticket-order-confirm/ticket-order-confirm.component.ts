@@ -27,7 +27,17 @@ export class TicketOrderConfirmComponent {
   ticketOrderDTO: TicketOrderDTO = {
     user_id: 0,
     total_money: 0,
-    payment_method: ''
+    payment_method: '',
+    stripe_token_id: '',
+    email: ''
+  }
+
+  stripe_detail: {
+    stripe_token_id: string,
+    email: string,
+  } = {
+    stripe_token_id: '',
+    email: ''
   }
 
   couponCode: string = ''; // Mã giảm giá
@@ -108,6 +118,10 @@ export class TicketOrderConfirmComponent {
             expYear: stripeToken.card.exp_year,
           },
         };
+        this.stripe_detail = {
+          stripe_token_id: paymentDetails.tokenId,
+          email: paymentDetails.email
+        }
         console.log('Payment successful!', paymentDetails);
         await this.makeOrder();
       },
@@ -129,10 +143,13 @@ export class TicketOrderConfirmComponent {
       window.document.body.appendChild(script);
     }
   }
+
   async makeOrder() {
     this.ticketOrderDTO.total_money = this.totalAmount;
     this.ticketOrderDTO.user_id = this.tokenService.getUserId();
     this.ticketOrderDTO.payment_method = 'stripe';
+    this.ticketOrderDTO.stripe_token_id = this.stripe_detail.stripe_token_id;
+    this.ticketOrderDTO.email = this.stripe_detail.email;
     try {
       const response = await this.ticketOrderService.insertTicketOrder(this.ticketOrderDTO).toPromise();
       if (response) {
