@@ -29,5 +29,18 @@
 
 .category-item:hover {
     background-color: white;
-    color: rgb(45, 194, 117);
+    color: rgb(194, 45, 169);
 }
+
+.btn-outline-success {
+    color: rgb(255, 255, 255) !important;             /* Màu chữ */
+    border-color: purple !important;      /* Màu viền */
+    background-color: transparent !important; /* Nền trong suốt */
+  }
+  
+  .btn-outline-success:hover {
+    color: white !important;              /* Màu chữ khi hover */
+    background-color: purple !important;  /* Màu nền khi hover */
+    border-color: purple !important;      /* Màu viền khi hover */
+  }
+  
