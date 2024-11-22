@@ -1,3 +1,7 @@
+h1{
+    color: black !important;
+}
+
 .sidebar {
     color: black;
 }
@@ -9,4 +13,79 @@
 .nav-link:hover{
     background-color: blue;
     color: white !important;
+}
+
+.sidebar {
+    color: black;
+    background-color: #f8f9fa; /* Màu nền nhẹ hơn */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Tạo bóng để làm nổi bật */
+    height: 100vh;
+    padding: 20px 10px;
+    border-right: 1px solid #e0e0e0; /* Tạo đường phân cách */
+}
+
+/* Tiêu đề Sidebar */
+.sidebar h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40; /* Màu đậm hơn cho tiêu đề */
+    margin-bottom: 30px;
+    text-transform: uppercase; /* In hoa chữ */
+    border-bottom: 2px solid #007bff; /* Đường gạch dưới */
+    padding-bottom: 10px;
+}
+
+/* Danh sách Navigation */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #495057; /* Màu chữ xám đậm */
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px; /* Tạo góc bo tròn */
+    transition: all 0.3s ease-in-out; /* Tạo hiệu ứng chuyển đổi */
+}
+
+.nav-link:hover {
+    background-color: #007bff; /* Màu xanh dương */
+    color: white !important; /* Màu chữ trắng */
+    transform: scale(1.05); /* Phóng to nhẹ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng */
+}
+
+/* Link đang hoạt động */
+.nav-link.active {
+    background-color: #0056b3; /* Màu xanh đậm */
+    color: white !important;
+    font-weight: bold; /* Tăng độ đậm */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng */
+}
+
+/* Các Icon */
+.nav-link i {
+    font-size: 18px; /* Kích thước icon */
+}
+
+/* Khu vực nội dung chính */
+.overflow-auto {
+    padding: 20px;
+    background-color: #ffffff; /* Màu nền trắng */
+    min-height: 100vh; /* Chiều cao tối thiểu */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Bóng nhẹ bên trong */
+}
+
+/* Phần responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        z-index: 1050;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
 }
