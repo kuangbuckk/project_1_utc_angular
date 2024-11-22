@@ -97,7 +97,7 @@ export class TicketOrderConfirmComponent {
   clearCart(showAlert: boolean = true) {
     this.cartService.clearCart();
     if (showAlert) {
-      alert('Đã xóa giỏ hàng');
+      // alert('Đã xóa giỏ hàng');
     }
     this.router.navigate(['/']);
   }

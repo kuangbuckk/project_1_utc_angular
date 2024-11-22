@@ -18,7 +18,11 @@ export class TicketOrderDetailService {
         return this.http.post<TicketOrderDetail>(this.apiTicketOrderDetail, ticketOrderDetailDTO)
     }
 
-    getAllTicketOrderDetailsByUserId(userId: number):Observable<TicketOrderDetail[]>{
-        return this.http.get<TicketOrderDetail[]>(`${this.apiTicketOrderDetail}/user/${userId}`)
+    // getAllTicketOrderDetailsByUserId(userId: number):Observable<TicketOrderDetail[]>{
+    //     return this.http.get<TicketOrderDetail[]>(`${this.apiTicketOrderDetail}/user/${userId}`)
+    // }
+
+    getAllTicketOrderDetailsByTicketOrderId(ticketOrderId: number):Observable<TicketOrderDetail[]>{        
+        return this.http.get<TicketOrderDetail[]>(`${this.apiTicketOrderDetail}/order/${ticketOrderId}`)
     }
 }

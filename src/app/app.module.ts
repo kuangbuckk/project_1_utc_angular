@@ -17,9 +17,10 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AdminModule } from './components/admin/admin.module';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { MyOrdersComponent } from './components/my-orders-details/my-orders.component';
 import { MyTicketOrderDetailsComponent } from './components/my-ticket-order-details/my-ticket-order-details.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { MyTicketOrdersComponent } from './components/my-ticket-orders/my-ticket-orders.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     PageNotFoundComponent,
     MyOrdersComponent,
     MyTicketOrderDetailsComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    MyTicketOrdersComponent
   ],
   imports: [
     CommonModule,

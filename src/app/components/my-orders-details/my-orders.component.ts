@@ -1,8 +1,7 @@
-import { TokenService } from './../../services/token.service';
-import { TicketOrderDetailService } from './../../services/ticket.order.detail.service';
+import { TokenService } from '../../services/token.service';
+import { TicketOrderDetailService } from '../../services/ticket.order.detail.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TicketOrder } from '../../model/ticket.order';
 import { TicketOrderDetail } from '../../model/ticket.order.detail';
 
 @Component({
@@ -12,22 +11,24 @@ import { TicketOrderDetail } from '../../model/ticket.order.detail';
 })
 export class MyOrdersComponent {
   ticketOrderDetails: TicketOrderDetail[] = [];
-  userId: number = 0;
+  ticketOrderId: number = 0;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private ticketOrderDetailService: TicketOrderDetailService,
-    private tokenService: TokenService
   ) { }
 
   ngOnInit() {
-    this.userId = this.tokenService.getUserId();
+    const idParam = this.activatedRoute.snapshot.paramMap.get('ticketOrderId');
+    if (idParam) {
+      this.ticketOrderId = parseInt(idParam);
+    }
     debugger
-    this.getOrders(this.userId);
+    this.getOrders(this.ticketOrderId);
   }
 
-  getOrders(userId: number) {
-    this.ticketOrderDetailService.getAllTicketOrderDetailsByUserId(userId).subscribe({
+  getOrders(ticketOrderId: number) {
+    this.ticketOrderDetailService.getAllTicketOrderDetailsByTicketOrderId(ticketOrderId).subscribe({
       next: (response: any) => {
         debugger
         this.ticketOrderDetails = response;

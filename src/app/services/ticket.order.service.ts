@@ -12,6 +12,10 @@ export class TicketOrderService {
     private apiTicketOrder = `${environment.apiBaseUrl}/ticketOrders`
 
     constructor(private http: HttpClient) { }
+
+    getTicketOrdersByUserId(userId: number):Observable<TicketOrder[]>{
+        return this.http.get<TicketOrder[]>(`${this.apiTicketOrder}/user/${userId}`)
+    }
     
     insertTicketOrder(ticketOrderDTO: TicketOrderDTO):Observable<TicketOrder>{
         return this.http.post<TicketOrder>(this.apiTicketOrder, ticketOrderDTO)

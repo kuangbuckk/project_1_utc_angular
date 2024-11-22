@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mã đơn hàng</th>
+                <th scope="col">Mã thanh toán</th>
+                <th scope="col">Tổng số tiền</th>
+                <th scope="col">Ngày mua</th>
+                <th scope="col">Phương thức thanh toán</th>
+                <th scope="col">Email nhận vé</th>
+                <th scope="col">Hành động</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="ticketOrders && ticketOrders.length > 0; else noTicketOrder">
+            <tr *ngFor="let ticketOrder of ticketOrders">
+                <td>{{ ticketOrder.id }}</td>
+                <td>{{ ticketOrder.stripe_token_id }}</td>
+                <td>{{ ticketOrder.total_money | currency: 'VND' }}</td>
+                <td>{{ ticketOrder.order_date | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ ticketOrder.payment_method }}</td>
+                <td>{{ ticketOrder.email }}</td>
+                <td>
+                    <a class="btn btn-success" [routerLink]="['/my-order', ticketOrder.id]">Xem chi tiết</a>
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #noTicketOrder>
+            <tr>
+                <td colspan="7" class="text-center">
+                    <img src="../../../assets/photos/empty-box-removebg-preview.png" alt="">
+                    <p>Bạn chưa có đơn hàng nào.</p>
+                </td>
+            </tr>
+        </ng-template>
+    </table>
+</div>
+<app-footer></app-footer>

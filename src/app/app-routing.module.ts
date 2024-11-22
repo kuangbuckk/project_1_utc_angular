@@ -12,9 +12,10 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './guard/admin.guard';
 import { UserGuard } from './guard/user.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { MyOrdersComponent } from "./components/my-orders/my-orders.component";
+import { MyOrdersComponent } from "./components/my-orders-details/my-orders.component";
 import { MyTicketOrderDetailsComponent } from "./components/my-ticket-order-details/my-ticket-order-details.component";
 import { MyAccountComponent } from "./components/my-account/my-account.component";
+import { MyTicketOrdersComponent } from "./components/my-ticket-orders/my-ticket-orders.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -23,8 +24,9 @@ const routes: Routes = [
     {path: 'event/:id', component: DetailEventComponent },
     {path: 'ticket-category/:id', component: TicketOrderComponent, canActivate: [UserGuard]},
     {path: 'my-cart', component: TicketOrderConfirmComponent, canActivate: [UserGuard]},
-    {path: 'my-order', component: MyOrdersComponent, canActivate: [UserGuard]},
-    {path: 'my-order/:id', component: MyTicketOrderDetailsComponent, canActivate: [UserGuard]},
+    {path: 'my-order', component: MyTicketOrdersComponent, canActivate: [UserGuard]},
+    {path: 'my-order/:ticketOrderId', component: MyOrdersComponent, canActivate: [UserGuard]},
+    {path: 'my-order/ticketDetails/:id', component: MyTicketOrderDetailsComponent, canActivate: [UserGuard]},
     {path: 'my-account', component: MyAccountComponent, canActivate: [UserGuard]},
     //Admin
     {

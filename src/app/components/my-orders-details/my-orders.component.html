@@ -8,7 +8,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Mã đơn hàng</th>
+                                <th scope="col">Mã đơn chi tiết đơn hàng</th>
                                 <th scope="col">Số lượng vé mua</th>
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Hành động</th> 
@@ -20,7 +20,7 @@
                                 <td>{{ ticketOrderDetail.number_of_tickets }}</td>
                                 <td>{{ ticketOrderDetail.total_money | currency: 'VND' }}</td>
                                 <td>
-                                    <a class="btn btn-success" [routerLink]="['/my-order', ticketOrderDetail.id]">Xem chi tiết</a>
+                                    <a class="btn btn-success" [routerLink]="['/my-order/ticketDetails', ticketOrderDetail.id]">Xem chi tiết</a>
                                 </td>
                             </tr>
                         </tbody>
