@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AdminModule } from './components/admin/admin.module';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { MyTicketOrderDetailsComponent } from './components/my-ticket-order-details/my-ticket-order-details.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MyTicketOrderDetailsComponent } from './components/my-ticket-order-deta
     TicketOrderConfirmComponent,
     PageNotFoundComponent,
     MyOrdersComponent,
-    MyTicketOrderDetailsComponent
+    MyTicketOrderDetailsComponent,
+    MyAccountComponent
   ],
   imports: [
     CommonModule,

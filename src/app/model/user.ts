@@ -1,6 +1,5 @@
-import { Role } from "../model/role";
-
-export interface UserResponse {
+import { Role } from './role';
+export interface User {
     id: number;
     full_name: string;
     email: string;

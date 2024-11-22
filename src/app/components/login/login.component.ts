@@ -65,12 +65,14 @@ export class LoginComponent {
             next: (userResponse: any) => {
               this.userResponse = {
                 id: userResponse.id,
-                fullname: userResponse.fullname,
+                full_name: userResponse.full_name,
                 address: userResponse.address,
                 date_of_birth: userResponse.date_of_birth,
-                role: userResponse.role
+                role: userResponse.role,
+                email: userResponse.email,
+                phone_number: userResponse.phone_number
               };
-              alert(userResponse.fullname + ' đăng nhập thành công');
+              alert(userResponse.full_name + ' đăng nhập thành công');
               this.userService.saveUserResponseToLocalStorage(this.userResponse);
               this.router.navigate(['/']);
             },

@@ -56,6 +56,5 @@ export class CartService {
   clearCart(): void {
     this.cart.clear(); // Xóa toàn bộ dữ liệu trong giỏ hàng
     this.saveCartToLocalStorage(); // Lưu giỏ hàng mới vào Local Storage (trống)
-    alert('Đã xóa giỏ hàng');
   }
 }

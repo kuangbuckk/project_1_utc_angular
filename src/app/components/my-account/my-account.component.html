@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Chi tiết tài khoản của tôi</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- (ngSubmit)="updateProfile()" -->
+            <form>
+                <fieldset>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="full-name" class="form-label">Họ và tên</label>
+                    <input type="text" class="form-control" id="full-name" [(ngModel)]="user.full_name" name="fullName" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone-number" class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" id="phone-number" [(ngModel)]="user.phone_number" name="phoneNumber" required>
+                  </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" id="address" [(ngModel)]="user.address" name="address" required>
+                </div>
+                
+                  <!-- <button type="submit" class="btn btn-primary">Cập nhật thông tin</button> -->
+                </fieldset>
+              </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
