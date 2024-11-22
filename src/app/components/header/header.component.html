@@ -1,48 +1,51 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
-          <a class="navbar-brand" href="/"><i class="fas fa-ticket-alt"></i> Ticketbox</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <ng-container *ngIf="userResponse">
-                  <li class="nav-item" *ngIf="userResponse?.role?.name === 'ADMIN'; else notADMIN">
-                    <a class="nav-link" routerLink="/admin"><i class="fas fa-user-shield"></i> Quản lý dữ liệu</a>
-                  </li>
-                  <ng-template #notADMIN>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
-                    </li>
-                  </ng-template>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {{ userResponse.full_name}}
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" routerLink="/my-order">Đơn vé của tôi</a></li>
-                      <li><a class="dropdown-item" routerLink="/my-account">Tài khoản của tôi</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#" (click)="logOut()">Đăng xuất</a></li>
-                    </ul>
-                  </li>
-                </ng-container>
-                <ng-container *ngIf="!userResponse">
-                  <li class="nav-item">
-                    <a class="nav-link"  id="login-button" routerLink="/login">Đăng nhập | Đăng ký</a>
-                  </li>
-                </ng-container>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+
+      <a class="navbar-brand" href="/">
+        <img src="assets/photos/download (1).png" alt="Ticketbox Logo" style="height: 40px;"> <!-- Điều chỉnh kích thước tại đây -->
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <ng-container *ngIf="userResponse">
+            <li class="nav-item" *ngIf="userResponse?.role?.name === 'ADMIN'; else notADMIN">
+              <a class="nav-link" routerLink="/admin"><i class="fas fa-user-shield"></i> Quản lý dữ liệu</a>
+            </li>
+            <ng-template #notADMIN>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
+              </li>
+            </ng-template>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ userResponse.full_name }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/my-order">Đơn vé của tôi</a></li>
+                <li><a class="dropdown-item" routerLink="/my-account">Tài khoản của tôi</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" (click)="logOut()">Đăng xuất</a></li>
+              </ul>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="!userResponse">
+            <li class="nav-item">
+              <a class="nav-link" id="login-button" routerLink="/login">Đăng nhập | Đăng ký</a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
