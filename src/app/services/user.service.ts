@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LoginDTO } from '../dtos/user/login.dto';
 import { environment } from '../enviroments/enviroment';
 import { UserResponse } from '../responses/user.response';
+import { UserUpdateDTO } from '../dtos/user/user.update.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class UserService {
   private apiRegsiter = `${environment.apiBaseUrl}/users/register`
   private apiLogin = `${environment.apiBaseUrl}/users/login`
   private apiuserDetail = `${environment.apiBaseUrl}/users/details`
+  private apiUpdateUser = `${environment.apiBaseUrl}/users/update`
 
   private apiConfig = {
     headers: this.createrHeader()
@@ -27,11 +29,20 @@ export class UserService {
     return this.http.post(this.apiLogin, loginDTO, this.apiConfig)
   }
 
+  updateUserInfo(token: string, userUpdateDTO: UserUpdateDTO):Observable<any>{
+    return this.http.put(this.apiUpdateUser, userUpdateDTO, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    })
+  }
+
   getUserDetail(token: string) {
     return this.http.post(this.apiuserDetail, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
       })
     }, this.apiConfig)
   }

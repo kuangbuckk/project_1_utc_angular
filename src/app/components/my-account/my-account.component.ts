@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { TokenService } from './../../services/token.service';
 import { Component } from '@angular/core';
 import { User } from '../../model/user';
+import { UserUpdateDTO } from '../../dtos/user/user.update.dto';
 
 @Component({
   selector: 'app-my-account',
@@ -9,17 +10,15 @@ import { User } from '../../model/user';
   styleUrls: ['./my-account.component.scss']
 })
 export class MyAccountComponent {
-  user: User = {
-    id: 1,
+  userUpdateDTO: UserUpdateDTO = {
     full_name: '',
     email: '',
     phone_number: '',
     address: '',
     date_of_birth: new Date(),
-    role: {
-      id: 1,
-      name: ''
-    }
+    current_password: '',
+    new_password: '',
+    retype_new_password: '',
   };
 
   constructor(
@@ -30,16 +29,35 @@ export class MyAccountComponent {
   ngOnInit() {
     const userResponse = this.userService.getUserResponseFromLocalStorage();
     if (userResponse) {
-      this.user = {
-        id: userResponse.id,
+      this.userUpdateDTO = {
         full_name: userResponse.full_name,
         email: userResponse.email,
         phone_number: userResponse.phone_number,
         address: userResponse.address,
         date_of_birth: userResponse.date_of_birth,
-        role: userResponse.role
+        current_password: '',
+        new_password: '',
+        retype_new_password: '',
       };
     }
   }
+
+  updateProfile() {
+    const token = this.tokenService.getToken();
+    if (!token) {
+      return;
+    }
+    this.userService.updateUserInfo(token, this.userUpdateDTO).subscribe({
+      next: (response: any) => {
+        alert('Cập nhật tài khoản thành công!');
+      },
+      complete: () => {
+        
+      },
+      error: (error: any) => {
+        console.error('Đã xảy ra lỗi: ', error?.error.message);
+      }
+    })
+  }    
 
 }

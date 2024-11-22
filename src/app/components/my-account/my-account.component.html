@@ -3,27 +3,38 @@
     <h1>Chi tiết tài khoản của tôi</h1>
     <div class="row">
         <div class="col-md-6">
-            <!-- (ngSubmit)="updateProfile()" -->
-            <form>
+            <form (ngSubmit)="updateProfile()">
                 <fieldset>
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="userUpdateDTO.email" name="email" required>
                   </div>
                   <div class="mb-3">
                     <label for="full-name" class="form-label">Họ và tên</label>
-                    <input type="text" class="form-control" id="full-name" [(ngModel)]="user.full_name" name="fullName" required>
+                    <input type="text" class="form-control" id="full-name" [(ngModel)]="userUpdateDTO.full_name" name="fullName" required>
                   </div>
                   <div class="mb-3">
                     <label for="phone-number" class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" id="phone-number" [(ngModel)]="user.phone_number" name="phoneNumber" required>
+                    <input type="text" class="form-control" id="phone-number" [(ngModel)]="userUpdateDTO.phone_number" name="phoneNumber" required>
                   </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" id="address" [(ngModel)]="user.address" name="address" required>
-                </div>
-                
-                  <!-- <button type="submit" class="btn btn-primary">Cập nhật thông tin</button> -->
+                  <div class="mb-3">
+                      <label for="address" class="form-label">Địa chỉ</label>
+                      <input type="text" class="form-control" id="address" [(ngModel)]="userUpdateDTO.address" name="address" required>
+                  </div>
+                  <h3 class="mt-3">Cập nhật mật khẩu mới</h3>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu hiện tại <span class="required-field">*</span></label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="userUpdateDTO.current_password" name="password" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="new-password" class="form-label">Mật khẩu mới <span class="required-field">*</span></label>
+                    <input type="password" class="form-control" id="new-password" [(ngModel)]="userUpdateDTO.new_password" name="newPassword" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Xác nhận mật khẩu mới <span class="required-field">*</span></label>
+                    <input type="password" class="form-control" id="confirm-password" [(ngModel)]="userUpdateDTO.retype_new_password" name="confirmPassword" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Cập nhật thông tin tài khoản</button>
                 </fieldset>
               </form>
         </div>
