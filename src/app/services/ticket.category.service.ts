@@ -39,5 +39,3 @@ export class TicketCategoryService {
         return this.http.delete(`${this.apiGetTicketCategories}/${ticketCategoryId}`)
     }
 }
-
-export { TicketCategory };

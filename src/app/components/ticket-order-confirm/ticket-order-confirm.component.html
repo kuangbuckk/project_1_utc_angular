@@ -7,17 +7,17 @@
     <div class="row">
         <div class="col-lg-6">
             <h2>Thông tin đơn đặt vé</h2>
-            <form>
+            <form (ngSubmit)="makeOrder()">
                 <fieldset>
                   <div class="mb-3">
                     <label for="payment-method" class="form-label">Phương thức thanh toán</label>
-                    <select id="payment-method" class="form-select">
-                      <option>Tiền mặt</option>
-                      <option>Chuyển khoản</option>
+                    <select id="payment-method" class="form-select" [(ngModel)]="ticketOrderDTO.payment_method" name="paymentMethod" required>
+                      <option value="cash">Tiền mặt</option>
+                      <option value="bank_transfer">Chuyển khoản</option>
                     </select>
                   </div>
                   <button type="submit" class="btn btn-primary">Xác nhận thanh toán</button>
-                  <button class="btn btn-secondary" style="margin-left: 1.5rem;" (click)="clearCart()">Huỷ giỏ hàng</button>
+                  <button type="button" class="btn btn-secondary" style="margin-left: 1.5rem;" (click)="clearCart()">Huỷ giỏ hàng</button>
                 </fieldset>
               </form>
         </div>

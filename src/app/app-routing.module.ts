@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './guard/admin.guard';
 import { UserGuard } from './guard/user.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MyOrdersComponent } from "./components/my-orders/my-orders.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'event/:id', component: DetailEventComponent },
     {path: 'ticket-category/:id', component: TicketOrderComponent, canActivate: [UserGuard]},
     {path: 'my-cart', component: TicketOrderConfirmComponent, canActivate: [UserGuard]},
+    {path: 'my-order', component: MyOrdersComponent, canActivate: [UserGuard]},
     //Admin
     {
         path: 'admin', 

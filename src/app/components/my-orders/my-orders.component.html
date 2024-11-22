@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="container">
+        <h2>Đơn vé đã đặt của tôi</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã đơn hàng</th>
+                                <th scope="col">Số lượng vé mua</th>
+                                <th scope="col">Tổng tiền</th>
+                                <!-- <th scope="col">Trạng thái</th>
+                                <th scope="col">Hành động</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ticketOrderDetail of ticketOrderDetails">
+                                <td>{{ ticketOrderDetail.id }}</td>
+                                <td>{{ ticketOrderDetail.numberOfTickets }}</td>
+                                <td>{{ ticketOrderDetail.totalMoney | currency: 'VND' }}</td>
+                                <!-- <td>{{ ticketOrderDetail.status }}</td> -->
+                                <!-- <td>
+                                    <a [routerLink]="['/my-orders', order.id]">Xem chi tiết</a>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
