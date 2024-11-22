@@ -23,3 +23,36 @@
         </tr>
     </tbody>
 </table>
+
+<div class="mt-5">
+    <h1>Quản lý vé</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên loại vé</th>
+                <th scope="col">Trạng thái vé</th>
+                <th scope="col">Email người mua</th>
+                <th scope="col">Tên người mua</th>
+                <th scope="col">ID người mua</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <th scope="row">{{ ticket.id }}</th>
+                <th scope="row">{{ ticket.ticket_category_name }}</th>
+                <td>
+                    <select [(ngModel)]="ticket.status" (change)="updateTicketStatus(ticket)">
+                      <option value="pending">Pending</option>
+                      <option value="processing">Processing</option>
+                      <option value="success">Success</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </td>
+                <td>{{ ticket.user_email }}</td>
+                <td>{{ ticket.user_name }}</td>
+                <td>{{ ticket.user_id }}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

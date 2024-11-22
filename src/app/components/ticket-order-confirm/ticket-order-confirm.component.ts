@@ -13,6 +13,8 @@ import { TicketOrder } from '../../model/ticket.order';
 import { TicketOrderDTO } from '../../dtos/ticket-order/ticket.order.dto';
 import { TicketOrderDetailDTO } from '../../dtos/ticket-order-detail/ticket.order.detail.dto';
 import { TicketOrderDetailService } from '../../services/ticket.order.detail.service';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ticket-order-confirm',
@@ -84,47 +86,26 @@ export class TicketOrderConfirmComponent {
     this.router.navigate(['/']);
   }
 
-  makeOrder(){
+  async makeOrder() {
     this.ticketOrderDTO.total_money = this.totalAmount;
     this.ticketOrderDTO.user_id = this.tokenService.getUserId();
 
-    this.ticketOrderService.insertTicketOrder(this.ticketOrderDTO).subscribe({
-      next: (response: any) => {
-        this.insertTickets();
-        this.insertTicketOrderDetails(response.id);
-        this.clearCart();
-        alert('Đặt vé thành công');
-        this.router.navigate(['/']);
-      },
-      complete: () => {
-        
-      },
-      error: (error: any) => {
-        debugger
-        alert('Đặt vé thất bại: ' + error.error.message);
+    try {
+      const response = await this.ticketOrderService.insertTicketOrder(this.ticketOrderDTO).toPromise();
+      if (response) {
+        await this.insertTicketOrderDetails(response.id);
+      } else {
+        alert('Tạo hoá đơn thất bại');
       }
-    });
-  }
-
-  async insertTickets() {
-    for (const item of this.cartItems) {
-      for (let i = 0; i < item.quantity; i++) {
-        console.log(`Inserting ticket ${i + 1} for item:`, item);
-        const ticketDTO: TicketDTO = {
-          ticket_category_id: item.ticketCategory.id,
-          user_id: this.tokenService.getUserId(),
-        };
-        try {
-          await this.ticketService.insertTicket(ticketDTO).toPromise();
-          console.log('Ticket inserted successfully');
-        } catch (error) {
-          console.error('Error inserting ticket:', error);
-        }
-      }
+      alert('Đặt vé thành công');
+      this.clearCart();
+      this.router.navigate(['/']);
+    } catch (error) {
+      alert('Đặt vé thất bại: ');
     }
   }
 
-  insertTicketOrderDetails(orderId: number) {
+  async insertTicketOrderDetails(orderId: number) {
     const ticketOrderDetailsDTO = this.cartItems.map(item => ({
       ticket_order_id: orderId,
       ticket_category_id: item.ticketCategory.id,
@@ -132,15 +113,34 @@ export class TicketOrderConfirmComponent {
       total_money: item.ticketCategory.price * item.quantity
     }));
 
-    ticketOrderDetailsDTO.forEach(detail => {
-      this.ticketOrderDetailService.insertTicketOrderDetail(detail).subscribe({
-        next: (response: any) => {
-          console.log('Ticket order detail inserted successfully');
-        },
-        error: (error: any) => {
-          console.error('Error inserting ticket order detail:', error);
+    for (const detail of ticketOrderDetailsDTO) {
+      try {
+        const response = await this.ticketOrderDetailService.insertTicketOrderDetail(detail).toPromise();
+        if (response) {
+          await this.insertTickets(response.id, detail.ticket_category_id, detail.number_of_tickets);
+        } else {
+          console.error('Response is undefined');
         }
-      });
-    });
+      } catch (error) {
+        console.error('Error inserting ticket order detail:', error);
+      }
+    }
+  }
+
+  async insertTickets(ticketOrderDetailId: number, ticketCategoryId: number, quantity: number) {
+    for (let i = 0; i < quantity; i++) {
+      console.log(`Inserting ticket ${i + 1} for ticket category ID: ${ticketCategoryId}`);
+      const ticketDTO: TicketDTO = {
+        ticket_category_id: ticketCategoryId,
+        ticket_order_detail_id: ticketOrderDetailId,
+        user_id: this.tokenService.getUserId(),
+      };
+      try {
+        await this.ticketService.insertTicket(ticketDTO).toPromise();
+        console.log('Ticket inserted successfully');
+      } catch (error) {
+        console.error('Error inserting ticket:', error);
+      }
+    }
   }
 }

@@ -16,4 +16,17 @@ export class TicketService {
     insertTicket(ticketDTO: TicketDTO):Observable<Ticket>{
         return this.http.post<Ticket>(this.apiTicket, ticketDTO)
     }
+
+    getTicketsByTicketCategoryId(ticketCategoryId: number):Observable<Ticket[]>{
+        return this.http.get<Ticket[]>(`${this.apiTicket}/ticketCategory/${ticketCategoryId}`)
+    }
+
+    getTicketsByTicketOrderDetailId(ticketOrderDetailId: number):Observable<Ticket[]>{
+        return this.http.get<Ticket[]>(`${this.apiTicket}/ticketOrderDetail/${ticketOrderDetailId}`)
+    }
+
+    updateTicketStatus(ticketId: number, status: string): Observable<any> {
+      const params = new HttpParams().set('status', status);
+      return this.http.patch<any>(`${this.apiTicket}/${ticketId}/status`, {}, { params });
+    }
 }

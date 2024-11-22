@@ -11,19 +11,19 @@
                                 <th scope="col">Mã đơn hàng</th>
                                 <th scope="col">Số lượng vé mua</th>
                                 <th scope="col">Tổng tiền</th>
-                                <!-- <th scope="col">Trạng thái</th>
-                                <th scope="col">Hành động</th> -->
+                                <!-- <th scope="col">Trạng thái</th>-->
+                                <th scope="col">Hành động</th> 
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let ticketOrderDetail of ticketOrderDetails">
                                 <td>{{ ticketOrderDetail.id }}</td>
-                                <td>{{ ticketOrderDetail.numberOfTickets }}</td>
-                                <td>{{ ticketOrderDetail.totalMoney | currency: 'VND' }}</td>
+                                <td>{{ ticketOrderDetail.number_of_tickets }}</td>
+                                <td>{{ ticketOrderDetail.total_money | currency: 'VND' }}</td>
                                 <!-- <td>{{ ticketOrderDetail.status }}</td> -->
-                                <!-- <td>
-                                    <a [routerLink]="['/my-orders', order.id]">Xem chi tiết</a>
-                                </td> -->
+                                <td>
+                                    <a class="btn btn-success" [routerLink]="['/my-order', ticketOrderDetail.id]">Xem chi tiết</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

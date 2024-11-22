@@ -18,6 +18,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AdminModule } from './components/admin/admin.module';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { MyTicketOrderDetailsComponent } from './components/my-ticket-order-details/my-ticket-order-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     AppComponent,
     TicketOrderConfirmComponent,
     PageNotFoundComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    MyTicketOrderDetailsComponent
   ],
   imports: [
     CommonModule,

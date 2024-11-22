@@ -13,6 +13,7 @@ import { AdminGuard } from './guard/admin.guard';
 import { UserGuard } from './guard/user.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MyOrdersComponent } from "./components/my-orders/my-orders.component";
+import { MyTicketOrderDetailsComponent } from "./components/my-ticket-order-details/my-ticket-order-details.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'ticket-category/:id', component: TicketOrderComponent, canActivate: [UserGuard]},
     {path: 'my-cart', component: TicketOrderConfirmComponent, canActivate: [UserGuard]},
     {path: 'my-order', component: MyOrdersComponent, canActivate: [UserGuard]},
+    {path: 'my-order/:id', component: MyTicketOrderDetailsComponent, canActivate: [UserGuard]},
     //Admin
     {
         path: 'admin', 
