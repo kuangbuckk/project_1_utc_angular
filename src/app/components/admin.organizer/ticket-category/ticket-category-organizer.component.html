@@ -1,0 +1,69 @@
+<h1>Quản lý loại vé cho sự kiện</h1>
+<button class="btn btn-success mb-2" (click)="insertTicketCategory(eventId)">Thêm loại vé cho sự kiện</button>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên loại vé</th>
+            <th scope="col">Gía tiền</th>
+            <th scope="col">Số vé còn lại</th>
+            <th scope="col">Hành động</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="ticketCategories && ticketCategories.length > 0; else noTicketCategories">
+        <tr *ngFor="let ticketCategory of ticketCategories">
+            <th scope="row">{{ ticketCategory.id }}</th>
+            <th scope="row">{{ ticketCategory.category_name }}</th>
+            <th scope="row">{{ ticketCategory.price }}</th>
+            <th scope="row">{{ ticketCategory.remaining_count }}</th>
+            <td>
+                <button class="btn btn-primary" (click)="editTicketCategory(ticketCategory.id, eventId)">Sửa</button>
+                <button class="btn btn-danger" (click)="deleteTicketCategory(ticketCategory.id)">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+    
+    <ng-template #noTicketCategories>
+        <tr>
+            <td colspan="5" class="text-center">Chưa có có loại vé nào cho sự kiện này.</td>
+        </tr>
+    </ng-template>
+</table>
+
+<div class="mt-5">
+    <h1>Quản lý vé</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên loại vé</th>
+                <th scope="col">Trạng thái vé</th>
+                <th scope="col">Email người mua</th>
+                <th scope="col">Tên người mua</th>
+                <th scope="col">ID người mua</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="tickets && tickets.length > 0; else noTickets">
+            <tr *ngFor="let ticket of tickets">
+                <th scope="row">{{ ticket.id }}</th>
+                <th scope="row">{{ ticket.ticket_category_name }}</th>
+                <td>
+                    <select [(ngModel)]="ticket.status" (change)="updateTicketStatus(ticket)">
+                      <option value="pending">Pending</option>
+                      <option value="processing">Processing</option>
+                      <option value="success">Success</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </td>
+                <td>{{ ticket.user_email }}</td>
+                <td>{{ ticket.user_name }}</td>
+                <td>{{ ticket.user_id }}</td>
+            </tr>
+        </tbody>
+        <ng-template #noTickets>
+            <tr>
+                <td colspan="5" class="text-center">Chưa có ai đặt mua vé ☺.</td>
+            </tr>
+        </ng-template>
+    </table>    
+</div>

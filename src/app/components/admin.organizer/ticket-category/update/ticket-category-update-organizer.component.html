@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Sửa loại vé</h3>
+        <div class="row mb-3">
+          <form (ngSubmit)="updateTicketCategory()">
+            <div class="form-group mb-3">
+              <label for="name">Tên loại vé: </label>
+              <input type="text" id="name" [(ngModel)]="updateTicketCategoryDTO.category_name" 
+              name="category_name" class="form-control" required>
+            </div>     
+
+            <div class="form-group mb-3">
+                <label for="price">Giá tiền: </label>
+                <input type="text" id="price" [(ngModel)]="updateTicketCategoryDTO.price" 
+                name="price" class="form-control" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="remaining_count">Số lượng vé bán: </label>
+                <input type="text" id="remaining_count" [(ngModel)]="updateTicketCategoryDTO.remaining_count" 
+                name="remaining_count" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>

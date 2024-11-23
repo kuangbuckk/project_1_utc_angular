@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TicketCategory } from '../model/ticket.category';
 import { TicketCategoryDTO } from '../dtos/ticket-category/ticket.category.dto';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,19 @@ export class TicketCategoryService {
 
     insertTicketCategory(ticketCategoryDTO: TicketCategoryDTO):Observable<TicketCategory>{
         return this.http.post<TicketCategory>(this.apiGetTicketCategories, ticketCategoryDTO)
+    }
+
+    insertTicketCategoryByOrganization(token: string, ticketCategoryDTO: TicketCategoryDTO):Observable<TicketCategory> {
+        return this.http.post<TicketCategory>(`${this.apiGetTicketCategories}/organization`, ticketCategoryDTO, {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            })
+          })
+    }
+
+    updateTicketCategoryByOrganization(token: string, ticketCategoryId: number, updateTicketCategoryDTO: TicketCategoryDTO):Observable<TicketCategory>{
+        return this.http.put<TicketCategory>(`${this.apiGetTicketCategories}/organization/${ticketCategoryId}`, updateTicketCategoryDTO);
     }
 
     updateTicketCategory(ticketCategoryId: number, updateTicketCategoryDTO: TicketCategoryDTO):Observable<any>{
