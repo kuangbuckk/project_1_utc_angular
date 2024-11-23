@@ -16,6 +16,8 @@ import { MyOrdersComponent } from "./components/my-orders-details/my-orders.comp
 import { MyTicketOrderDetailsComponent } from "./components/my-ticket-order-details/my-ticket-order-details.component";
 import { MyAccountComponent } from "./components/my-account/my-account.component";
 import { MyTicketOrdersComponent } from "./components/my-ticket-orders/my-ticket-orders.component";
+import { OrganizerComponent } from "./components/admin.organizer/organizer.component";
+import { OrganizerGuard } from "./guard/organization.guard";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -33,6 +35,12 @@ const routes: Routes = [
         path: 'admin', 
         component: AdminComponent, 
         canActivate: [AdminGuard]
+    },
+    //Organizer
+    {
+        path: 'organizer',
+        component: OrganizerComponent,
+        canActivate: [OrganizerGuard]
     },
    
     //404 - Not found

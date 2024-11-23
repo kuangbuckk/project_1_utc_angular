@@ -14,13 +14,14 @@ import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TicketOrderConfirmComponent } from './components/ticket-order-confirm/ticket-order-confirm.component';
 import { CommonModule, DatePipe } from '@angular/common';
-import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AdminModule } from './components/admin/admin.module';
 import { MyOrdersComponent } from './components/my-orders-details/my-orders.component';
 import { MyTicketOrderDetailsComponent } from './components/my-ticket-order-details/my-ticket-order-details.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyTicketOrdersComponent } from './components/my-ticket-orders/my-ticket-orders.component';
+import { OrganizerModule } from './components/admin.organizer/organizer.module';
+import { OrganizerRoutingModule } from './components/admin.organizer/organizer-routing.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import { MyTicketOrdersComponent } from './components/my-ticket-orders/my-ticket
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    OrganizerModule,
+    OrganizerRoutingModule
   ],
   providers: [
     { 

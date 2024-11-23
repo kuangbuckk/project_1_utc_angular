@@ -1,0 +1,101 @@
+/* Tổng thể Sidebar */
+.sidebar {
+    color: black;
+    background-color: #ffffff; /* Màu nền trắng */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Tạo bóng */
+    height: 100vh;
+    padding: 20px 10px;
+    border-right: 2px solid #e0e0e0; /* Đường phân cách nhẹ */
+}
+
+/* Tiêu đề Sidebar */
+.sidebar h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2f4f4f; /* Màu xanh đen nhẹ */
+    margin-bottom: 30px;
+    text-transform: uppercase; /* In hoa tiêu đề */
+    border-bottom: 2px solid #a72881; /* Đường gạch xanh lá */
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Danh sách Navigation */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    color: #2f4f4f; /* Màu xanh đen */
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 15px;
+    border-radius: 8px; /* Góc bo tròn */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
+}
+
+.nav-link:hover {
+    background-color: #a72881; /* Màu xanh lá đậm */
+    color: white !important; /* Màu chữ trắng */
+    transform: translateX(5px); /* Hiệu ứng đẩy sang phải */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng */
+}
+
+/* Link đang hoạt động */
+.nav-link.active {
+    background-color: #88216e; /* Xanh lá đậm hơn */
+    color: white !important;
+    font-weight: bold;
+    border-left: 5px solid #4a0c35; /* Đường viền trái tạo điểm nhấn */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng */
+}
+
+/* Các Icon */
+.nav-link i {
+    font-size: 18px; /* Kích thước icon */
+    color: #000000; /* Màu xanh lá cho icon */
+}
+
+/* Khu vực nội dung chính */
+.overflow-auto {
+    padding: 20px;
+    background-color: #f8f9fa; /* Màu nền trắng nhạt */
+    min-height: 100vh; /* Chiều cao tối thiểu */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Bóng nhẹ bên trong */
+    color: #2f4f4f; /* Màu chữ chính */
+}
+
+/* Phần responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        z-index: 1050;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+/* Nút mở Sidebar (chỉ dùng khi responsive) */
+.toggle-sidebar {
+    display: none; /* Ẩn nút trên màn hình lớn */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #88216e;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1100;
+}
+
+@media (max-width: 768px) {
+    .toggle-sidebar {
+        display: block;
+    }
+}
+

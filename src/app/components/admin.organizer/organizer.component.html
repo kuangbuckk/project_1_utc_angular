@@ -1,0 +1,43 @@
+<div class="row">
+    <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block bg-light sidebar">
+      <div class="position-sticky">
+        <h4 class="text-center mt-2">Quản lý ban tổ chức</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link link-dark" 
+                routerLink="/"
+                routerLinkActive="active">
+                <i class="fas fa-house"></i>Về trang chủ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-dark" 
+                routerLink="/organizer/events"
+                routerLinkActive="active">
+                <i class="fas fa-calendar-plus"></i> Sự kiện
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link link-dark" 
+                routerLink="/admin/categories"
+                routerLinkActive="active">
+                <i class="fas fa-box-open"></i> Các loại sự kiện
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-dark" 
+            routerLink="/admin/events"
+              routerLinkActive="active">
+              <i class="fas fa-calendar-plus"></i> Sự kiện
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <div class="col-md-10 col-lg-10 overflow-auto">
+      <!-- <ng-container [ngSwitch]="adminComponent">
+        <app-categories-admin *ngSwitchCase="'categories'"></app-categories-admin> 
+        <app-categories-insert-admin *ngSwitchCase="'categories-insert'"></app-categories-insert-admin>                   
+      </ng-container> -->
+      <router-outlet></router-outlet>
+    </div>
