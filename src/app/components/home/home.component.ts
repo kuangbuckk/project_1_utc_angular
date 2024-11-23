@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   events: Event[] = [];
+  activated_events: Event[] = [];
+  // completed_events: Event[] = [];
   categories: Category[] = [];
   selectedCategoryId: number  = 0;
   currentPage: number = 0;
@@ -28,6 +30,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getEvents(this.currentPage, this.itemsPerPage);
+    debugger;
     this.getCategories();
   }
 
@@ -56,6 +59,7 @@ export class HomeComponent {
           event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
         });
         this.events = response.events;
+        this.activated_events = this.events.filter(event => event.status === 'active');
         this.totalPages = response.totalPages;
         this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
       },

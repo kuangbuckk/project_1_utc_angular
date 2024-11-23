@@ -26,7 +26,7 @@
   </div>
   <div class="container">
     <div id="event-container" class="row" *ngIf="events && events.length > 0; else noEvent">
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of events">
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of activated_events">
           <div class="card event-item" style="width: 18rem;" (click)="goToDetail(event.id)">
               <img [src]="event.url" class="card-img-top" alt="event-img">
               <div class="card-body">
@@ -70,4 +70,18 @@
     </nav>
   </div>
 </div>
+  <!-- <div class="container">
+    <h2>Các sự kiện đã kết thúc</h2>
+    <div id="event-container" class="row" *ngIf="events && events.length > 0; else noEvent">
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of completed_events">
+          <div class="card event-item" style="width: 18rem;" (click)="goToDetail(event.id)">
+              <img [src]="event.url" class="card-img-top" alt="event-img">
+              <div class="card-body">
+                <h3 class="card-title">{{ event.name }}</h3>
+                <p class="card-text">{{ event.description }}</p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div> -->
 <app-footer></app-footer>
