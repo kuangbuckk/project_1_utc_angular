@@ -23,8 +23,13 @@
               <a class="nav-link" routerLink="/admin"><i class="fas fa-user-shield"></i> Quản lý dữ liệu</a>
             </li>
             <ng-template #notADMIN>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="userResponse?.role?.name === 'USER'; else notUser">
                 <a class="nav-link" routerLink="/my-cart"><i class="fas fa-cart-plus"></i> Giỏ hàng của tôi</a>
+              </li>
+            </ng-template>
+            <ng-template #notUser>
+              <li class="nav-item" *ngIf="userResponse?.role?.name === 'ORGANIZER'">
+                <a class="nav-link" routerLink="/organizer"><i class="fas fa-cart-plus"></i> Quản trị ban tổ chức</a>
               </li>
             </ng-template>
             <li class="nav-item dropdown">
