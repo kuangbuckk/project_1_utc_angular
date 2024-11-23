@@ -23,6 +23,15 @@ export class TokenService {
         return 'userId' in userObject ? parseInt(userObject['userId']) : 0;
     }
 
+    getOrganizationId(): number {
+        let token = this.getToken();
+        if (!token) {
+            return 0;
+        }
+        let userObject = this.jwtHelperService.decodeToken(token);
+        return 'organizationId' in userObject ? parseInt(userObject['organizationId']) : 0;
+    }
+
     removeToken(): void {
         localStorage.removeItem(this.TOKEN_KEY);
     }              

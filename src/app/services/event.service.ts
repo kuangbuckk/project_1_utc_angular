@@ -31,6 +31,13 @@ export class EventService {
       return this.http.get<Event[]>(`${this.apiGetEvents}/category/${categoryId}`, {params})
   }
 
+  getEventsByOrganizationId(organizationId: number, page: number, limit: number):Observable<Event[]>{
+      const params = new HttpParams()
+        .set('page', page.toString())
+        .set('limit', limit.toString());
+      return this.http.get<Event[]>(`${this.apiGetEvents}/organization/${organizationId}`, {params})
+  }
+
   searchEventByKeyword(keyword: string, page: number, itemsPerPage: number): Observable<Event[]> {
     const params = new HttpParams()
       .set('keyword', keyword)
@@ -46,6 +53,11 @@ export class EventService {
 
   updateEvent(eventId: number, eventDTO: EventDTO): Observable<any> {
     return this.http.put(`${this.apiGetEvents}/${eventId}`, eventDTO);
+  }
+
+  updateEventStatus(eventId: number, status: string): Observable<any> {
+    const params = new HttpParams().set('status', status);
+    return this.http.patch<any>(`${this.apiGetEvents}/${eventId}/status`, {}, { params });
   }
 
   deleteEvent(id: number): Observable<any> {

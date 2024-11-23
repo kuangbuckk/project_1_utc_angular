@@ -1,0 +1,64 @@
+<h1>Quản lý các sự kiện</h1>
+<button class="btn btn-success mb-2" (click)="insertEvent()">Đề xuất admin thêm sự kiện</button>
+<div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Thuộc loại sự kiện</th>
+            <th scope="col">Địa điểm tổ chức</th>
+            <th scope="col">Thời gian tổ chức</th>
+            <th scope="col">Loại sự kiện</th>
+            <th scope="col">Bên tổ chức</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Quản lý vé</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="events && events.length > 0; else noEvents">
+        <tr *ngFor="let event of events">
+            <th scope="row">{{ event.id }}</th>
+            <td>{{ event.name }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.start_date }} - {{ event.end_date }}</td>
+            <td>{{ event.category_name }}</td>
+            <td>{{ event.organization_name }}</td>
+            <td>{{ event.status }}</td>
+            <td>
+              <button class="btn btn-success" (click)="manageTicketCategories(event.id)">Quản lý vé</button>
+            </td>
+        </tr>
+    </tbody>
+    <ng-template #noEvents>
+        <tr>
+            <td colspan="8" class="text-center">Chưa có sự kiện nào.</td>
+        </tr>
+    </ng-template>
+</table>
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="currentPage > 0">
+          <a class="page-link" (click)="onPageChange(0)">First</a>
+        </li>
+        <li class="page-item" *ngIf="currentPage > 0">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+        </li>
+        <ng-container *ngFor="let page of visiblePages">
+            <li class="page-item" [ngClass]="{'active': page === currentPage + 1}">
+              <a class="page-link" (click)="onPageChange(page - 1)">{{ page }}</a>
+            </li>
+          </ng-container>
+        <li class="page-item" *ngIf="currentPage < totalPages - 1">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">
+            <i class="fa fa-chevron-right"></i>
+          </a>
+        </li>
+        <li class="page-item" *ngIf="currentPage < totalPages - 1">
+          <a class="page-link" (click)="onPageChange(totalPages - 1)">Last</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
