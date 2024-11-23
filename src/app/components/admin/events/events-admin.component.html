@@ -10,6 +10,7 @@
             <th scope="col">Thời gian tổ chức</th>
             <th scope="col">Loại sự kiện</th>
             <th scope="col">Bên tổ chức</th>
+            <th scope="col">Trạng thái duyệt</th>
             <th scope="col">Quản lý vé</th>
             <th scope="col">Hành động</th>
         </tr>
@@ -22,6 +23,14 @@
             <td>{{ event.start_date }} - {{ event.end_date }}</td>
             <td>{{ event.category_name }}</td>
             <td>{{ event.organization_name }}</td>
+            <td>
+              <select [(ngModel)]="event.status" (change)="updateEventStatus(event)">
+                <option value="pending">Pending</option>
+                <option value="active">Active</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="completed">Completed</option>
+              </select>
+          </td>
             <td>
               <button class="btn btn-success" (click)="manageTicketCategories(event.id)">Quản lý vé</button>
             </td>

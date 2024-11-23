@@ -14,12 +14,15 @@ import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.
 import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-admin.component";
 import { TicketCategoryInsertAdminComponent } from "./ticket-category/insert/ticket-category-insert-admin.component";
 import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/ticket-category-update-admin.component";
+import { AdminGuard } from "../../guard/admin.guard";
 
 const routes: Routes = [
     //Admin
     {
         path: 'admin', 
         component: AdminComponent, 
+        // canActivate: [AdminGuard],
+        // canActivateChild: [AdminGuard],
         children: [
             {path: 'categories', component: CategoriesAdminComponent},
             {path: 'organizations', component: OrganizationsComponent},

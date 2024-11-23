@@ -91,4 +91,15 @@ export class EventsAdminComponent {
   manageTicketCategories(eventId: number) {
     this.router.navigate([`/admin/events/${eventId}/ticket-categories`]);
   }
+
+  updateEventStatus(event: Event) {
+    this.eventService.updateEventStatus(event.id, event.status).subscribe({
+      next: (response: any) => {
+        alert('Update event status successfully');
+      },
+      error: (error: any) => {
+        console.error('Error updating event status:', error);
+      }
+    });
+  }
 }

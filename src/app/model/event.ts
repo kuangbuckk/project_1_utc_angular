@@ -13,5 +13,6 @@ export interface Event {
     organization_id: number;
     organization_name: string;
     url: string;
+    status: string;
     event_images: EventImage[];
 }
