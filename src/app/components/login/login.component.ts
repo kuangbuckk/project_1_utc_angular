@@ -26,26 +26,13 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private tokenService: TokenService,
-    private roleService: RoleService) {
+    private tokenService: TokenService
+  ) {
     this.email = '';
     this.password = '';
   }
 
   ngOnInit() {
-    debugger;
-    this.roleService.getRoles().subscribe({
-      next: (roles: Role[]) => {
-        this.roles = roles;
-        this.selectedRole = roles.length > 0 ? roles[0] : undefined;
-      },
-      complete: () => {
-
-      },
-      error: (error: any) => {
-        alert('Get roles failed: ' + error.error);
-      }
-    })
   }
 
   login(){
@@ -53,7 +40,7 @@ export class LoginComponent {
     const loginDTO:LoginDTO = {
         "email": this.email,
         "password": this.password,
-        "role_id": this.selectedRole?.id ?? 1
+        // "role_id": this.selectedRole?.id ?? 1
     }
 
     this.userService.login(loginDTO).subscribe({
