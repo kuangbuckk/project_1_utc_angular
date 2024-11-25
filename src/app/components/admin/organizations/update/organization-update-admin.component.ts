@@ -33,7 +33,7 @@ export class OrganizationUpdateAdminComponent {
         }
       },
       error: (error: any) => {
-        alert('Get organization failed: ' + error.message);
+        alert('Get organization failed: ' + error.error);
       }
     })
   }
@@ -48,7 +48,7 @@ export class OrganizationUpdateAdminComponent {
         this.router.navigate(['/admin/organizations']);
       },
       error: (error: any) => {
-        alert('Update organization failed: ' + error.message);
+        alert('Update organization failed: ' + error.error);
       }
     })
   }

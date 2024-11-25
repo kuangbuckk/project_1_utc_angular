@@ -42,7 +42,7 @@ export class EventsInsertOrganizerComponent {
         
       },
       error: (error: any) => {
-        alert('Get categories failed: ' + error.message);
+        alert('Get categories failed: ' + error.error);
       }
     });
   }
@@ -66,7 +66,7 @@ export class EventsInsertOrganizerComponent {
       },
       error: (error: any) => {
         debugger;
-        alert('Insert event failed: ' + error.message);
+        alert('Insert event failed: ' + error.error);
       }
     })
   }
@@ -93,7 +93,7 @@ export class EventsInsertOrganizerComponent {
         this.router.navigate(['/organizer/events']);
       },
       error: (error: any) => {
-        alert('Upload images failed: ' + error.message);
+        alert('Upload images failed: ' + error.error);
       }
     });
   }

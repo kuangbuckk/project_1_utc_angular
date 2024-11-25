@@ -35,7 +35,7 @@ export class TicketCategoryInsertAdminComponent {
         this.router.navigate(['/admin/events']);
       },
       error: (error: any) => {
-        alert('Thêm loại vé thất bại: ' + error.message);
+        alert('Thêm loại vé thất bại: ' + error.error);
       }
     })
   }

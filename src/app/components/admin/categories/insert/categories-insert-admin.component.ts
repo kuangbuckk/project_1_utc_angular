@@ -25,7 +25,7 @@ export class CategoriesInsertAdminComponent {
         this.router.navigate(['/admin/categories']);
       },
       error: (error: any) => {
-        alert('Thêm category thất bại: ' + error.message);
+        alert('Thêm category thất bại: ' + error.error);
       }
     })
   }

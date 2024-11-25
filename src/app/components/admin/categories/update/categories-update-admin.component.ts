@@ -45,7 +45,7 @@ export class CategoriesUpdateAdminComponent implements OnInit {
         this.router.navigate(['/admin/categories']);
       },
       error: (error: any) => {
-        console.error('Error updating category:', error);
+        alert('Error updating category:' + error.error);
       }
     });
   }

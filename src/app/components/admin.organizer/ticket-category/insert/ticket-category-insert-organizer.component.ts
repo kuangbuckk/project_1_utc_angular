@@ -44,7 +44,7 @@ export class TicketCategoryInsertOrganizerComponent {
         this.router.navigate([`/organizer/events/${this.eventId}/ticket-categories`]);
       },
       error: (error: any) => {
-        alert('Thêm loại vé thất bại: ' + error.message);
+        alert('Thêm loại vé thất bại: ' + error.error);
       }
     })
   }

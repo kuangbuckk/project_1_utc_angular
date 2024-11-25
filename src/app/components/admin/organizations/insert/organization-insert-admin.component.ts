@@ -29,7 +29,7 @@ export class OrganizationInsertAdminComponent {
         this.router.navigate(['/admin/organizations']);
       },
       error: (error: any) => {
-        alert('Thêm organization thất bại: ' + error.message);
+        alert('Thêm organization thất bại: ' + error.error);
       }
     })
   }

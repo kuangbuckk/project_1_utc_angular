@@ -42,7 +42,7 @@ export class TicketCategoryOrganizerComponent {
         console.log('Completed');
       },
       error: (error: any) => {
-        console.error('Error fetching ticket categories:', error);
+        alert('Error fetching ticket categories:' + error.error);
       }
     });
   }
@@ -61,7 +61,7 @@ export class TicketCategoryOrganizerComponent {
         console.log('Completed fetching all tickets');
       },
       error: (error: any) => {
-        console.error('Error fetching tickets:', error);
+        alert('Error fetching tickets:' + error.error);
       }
     });
   }
@@ -81,7 +81,7 @@ export class TicketCategoryOrganizerComponent {
         this.getAllTicketCategoriesByEventId();
       },
       error: (error: any) => {
-        console.error('Error deleting ticket category:', error);
+        alert('Error deleting ticket category:' + error.error);
       }
     });
   }
@@ -92,7 +92,7 @@ export class TicketCategoryOrganizerComponent {
         alert('Ticket status updated successfully');
       },
       error: (error: any) => {
-        console.error('Error updating ticket status:', error);
+        alert('Error updating ticket status:' + error.error);
       }
     });
   }

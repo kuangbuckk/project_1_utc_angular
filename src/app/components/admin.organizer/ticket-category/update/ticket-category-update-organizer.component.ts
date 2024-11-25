@@ -44,7 +44,7 @@ export class TicketCategoryUpdateOrganizerComponent {
         
       },
       error: (error: any) => {
-        console.log('error: ', error);
+        alert('error: ' + error.error);
       }
     })
   }
@@ -62,7 +62,7 @@ export class TicketCategoryUpdateOrganizerComponent {
       },
       error: (error: any) => {
         debugger
-        alert('Cập nhật loại vé thất bại: ' + error.error.message);
+        alert('Cập nhật loại vé thất bại: ' + error.error);
       }
     });
   }

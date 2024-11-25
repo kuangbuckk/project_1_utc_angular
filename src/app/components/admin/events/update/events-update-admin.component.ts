@@ -41,7 +41,7 @@ export class EventsUpdateAdminComponent implements OnInit {
         this.event.end_date = new Date(this.event.end_date);
       },
       (error: any) => {
-        alert('Error fetching event: ' + error.message);
+        alert('Error fetching event: ' + error.error);
       }
     );
 
@@ -50,7 +50,7 @@ export class EventsUpdateAdminComponent implements OnInit {
         this.categories = categories;
       },
       (error: any) => {
-        alert('Get categories failed: ' + error.message);
+        alert('Get categories failed: ' + error.error);
       }
     );
 
@@ -59,7 +59,7 @@ export class EventsUpdateAdminComponent implements OnInit {
         this.organizations = organizations;
       },
       (error: any) => {
-        alert('Get organizations failed: ' + error.message);
+        alert('Get organizations failed: ' + error.error);
       }
     );
   }
@@ -70,9 +70,14 @@ export class EventsUpdateAdminComponent implements OnInit {
 
   updateEvent() {
     const eventDTO = {
-      ...this.event,
-      start_date: this.formatDate(this.event.start_date),
-      end_date: this.formatDate(this.event.end_date)
+      name: this.event.name,
+      description: this.event.description,
+      location: this.event.location,
+      start_date: this.formatDate(new Date(this.event.start_date)),
+      end_date: this.formatDate(new Date(this.event.end_date)),
+      category_id: this.event.category_id,
+      organization_id: this.event.organization_id,
+      url: this.event.url,
     };
 
     this.eventService.updateEvent(this.eventId, eventDTO).subscribe({
@@ -85,7 +90,7 @@ export class EventsUpdateAdminComponent implements OnInit {
         this.router.navigate(['/admin/events']);
       },
       error: (error: any) => {
-        alert('Update event failed: ' + error.message);
+        alert('Update event failed: ' + error.error);
       }
     });
   }
@@ -111,7 +116,7 @@ export class EventsUpdateAdminComponent implements OnInit {
         alert('Images uploaded successfully');
       },
       error: (error: any) => {
-        alert('Upload images failed: ' + error.message);
+        alert('Upload images failed: ' + error.error);
       }
     });
   }

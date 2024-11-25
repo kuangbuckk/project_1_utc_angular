@@ -59,7 +59,7 @@ export class TicketCategoryUpdateAdminComponent {
       },
       error: (error: any) => {
         debugger
-        alert('Cập nhật loại vé thất bại: ' + error.error.message);
+        alert('Cập nhật loại vé thất bại: ' + error.error);
       }
     });
   }

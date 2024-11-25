@@ -38,7 +38,7 @@ export class EventOrganizerComponent {
       complete: () => {
       },
       error: (error: any) => {
-        console.error('Error fetching events:', error);
+        alert('Error fetching events: ' + error.error);
       }
     });
   }

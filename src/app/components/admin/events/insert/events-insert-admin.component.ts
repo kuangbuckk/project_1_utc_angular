@@ -42,7 +42,7 @@ export class EventsInsertAdminComponent {
         
       },
       error: (error: any) => {
-        alert('Get organizations failed: ' + error.message);
+        alert('Get organizations failed: ' + error.error);
       }
     });
 
@@ -54,7 +54,7 @@ export class EventsInsertAdminComponent {
         
       },
       error: (error: any) => {
-        alert('Get categories failed: ' + error.message);
+        alert('Get categories failed: ' + error.error);
       }
     });
   }
@@ -77,7 +77,7 @@ export class EventsInsertAdminComponent {
       },
       error: (error: any) => {
         debugger;
-        alert('Insert event failed: ' + error.message);
+        alert('Insert event failed: ' + error.error);
       }
     })
   }
@@ -104,7 +104,7 @@ export class EventsInsertAdminComponent {
         this.router.navigate(['/admin/events']);
       },
       error: (error: any) => {
-        alert('Upload images failed: ' + error.message);
+        alert('Upload images failed: ' + error.error);
       }
     });
   }
