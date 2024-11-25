@@ -43,7 +43,7 @@ export class LoginComponent {
 
       },
       error: (error: any) => {
-        alert('Get roles failed: ' + error.message);
+        alert('Get roles failed: ' + error.error);
       }
     })
   }
@@ -68,19 +68,27 @@ export class LoginComponent {
                 full_name: userResponse.full_name,
                 address: userResponse.address,
                 date_of_birth: userResponse.date_of_birth,
+                is_active: userResponse.is_active,
                 role: userResponse.role,
                 email: userResponse.email,
-                phone_number: userResponse.phone_number
+                phone_number: userResponse.phone_number,
+                organization: userResponse.organization
               };
               alert(userResponse.full_name + ' đăng nhập thành công');
-              this.userService.saveUserResponseToLocalStorage(this.userResponse);
-              this.router.navigate(['/']);
+              if (this.userResponse.is_active !== 1){
+                this.router.navigate(['/']);
+                alert('Tài khoản của bạn đã bị khóa');
+                return;
+              } else {
+                this.userService.saveUserResponseToLocalStorage(this.userResponse);
+                this.router.navigate(['/']);
+              }
             },
             complete: () => {
               //xử lý khi request hoàn thành
             },
             error: (error: any) => {
-              alert('Get user details failed: ' + error.message);
+              alert('Get user details failed: ' + error.error);
             }
           })
         }
@@ -90,7 +98,7 @@ export class LoginComponent {
       },
       error: (error: any) => {
         //xử lý khi request gặp lỗi
-        alert('Loggin failed: ' + error.message);
+        alert('Loggin failed: ' + error.error);
       }
     })
   }
