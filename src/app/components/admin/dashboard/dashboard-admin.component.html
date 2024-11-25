@@ -1,18 +1,43 @@
 <div class="container-fluid">
+    <h1>Thống kê tập trung</h1>
     <div class="container">
-        <div>
-            <h1>Thống kê thể loại sự kiện</h1>
-            <canvas baseChart
-                [type]="'pie'"
-                [datasets]="pieChartEventDatasets"
-                [labels]="pieChartEventLabels"
-                [options]="pieChartEventOptions"
-                [plugins]="pieChartEventPlugins"
-                [legend]="pieChartEventLegend">
-            </canvas>
+        <div class="row">
+            <div class="col-4">
+                <h3>Thể loại của các sự kiện</h3>
+                <canvas baseChart
+                    [type]="'pie'"
+                    [datasets]="pieChartEventDatasets"
+                    [labels]="pieChartEventLabels"
+                    [options]="pieChartEventOptions"
+                    [plugins]="pieChartEventPlugins"
+                    [legend]="pieChartEventLegend">
+                </canvas>
+            </div>
+            <div class="col-4">
+                <h3>Tình trạng các sự kiện</h3>
+                <canvas baseChart
+                    [type]="'pie'"
+                    [datasets]="pieChartEventStatusDatasets"
+                    [labels]="pieChartEventStatusLabels"
+                    [options]="pieChartEventOptions"
+                    [plugins]="pieChartEventStatusPlugins"
+                    [legend]="pieChartEventStatusLegend">
+                </canvas>
+            </div>
+            <div class="col-4">
+                <h3>Số sự kiện thuộc 1 ban tổ chức</h3>
+                <canvas baseChart
+                    [type]="'pie'"
+                    [datasets]="pieChartEventByOrganizationDatasets"
+                    [labels]="pieChartEventByOrganizationLabels"
+                    [options]="pieChartEventOptions"
+                    [plugins]="pieChartEventByOrganizationPlugins"
+                    [legend]="pieChartEventByOrganizationLegend">
+                </canvas>
+            </div>
         </div>
-        <div id="ticket-bar-chart">
-            <h1>Thống kê doanh thu</h1>
+        <div id="ticket-bar-chart" class="row">
+            <h2>Thống kê doanh thu</h2>
             <canvas baseChart
                 [data]="barChartData"
                 [options]="barChartOptions"

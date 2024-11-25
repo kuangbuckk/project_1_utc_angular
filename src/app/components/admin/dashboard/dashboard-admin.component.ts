@@ -1,3 +1,5 @@
+import { OrganizationService } from './../../../services/organization.service';
+import { Organization } from './../../../model/organization';
 import { CategoryService } from './../../../services/category.service';
 import { Component, ChangeDetectorRef  } from '@angular/core';
 import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
@@ -14,28 +16,76 @@ import { TicketService } from '../../../services/ticket.service';
 })
 export class DashboardAdminComponent {
   categories: Category[] = [];
+  organizations: Organization[] = [];
   events: Event[] = [];
   tickets: Ticket[] = [];
 
   ticketPriceMonthly: number[] = [];
 
+  // Thống kê thể loại sự kiện
   public pieChartEventOptions: ChartOptions<'pie'> = {
-    responsive: false,
+    responsive: true,
   };
   public pieChartEventLabels: string[] = []
   public pieChartEventDatasets = [ {
-    data: [ 300, 500, 100 ]
+    data: [ 300, 500, 100, 0 ],
+    backgroundColor: ["green", "blue", "red", "purple", "yellow", "orange", "brown"],
+    hoverBackgroundColor: ["darkgreen", "darkblue", "darkred", "darkpurple", "darkyellow", "darkorange", "darkbrown"],	
   } ];
   public pieChartEventLegend = true;
   public pieChartEventPlugins = [];
+
+  // Thống kê tình trạng sự kiện
+  public pieChartEventStatusOptions: ChartOptions<'pie'> = {
+    responsive: false,
+  };
+  public pieChartEventStatusLabels = [ ['Đang diễn ra'], ['Chờ duyệt'], ['Huỷ'], ['Đã xong']];
+  public pieChartEventStatusDatasets = [ {
+    data: [ 0, 0, 0, 0 ],
+    backgroundColor: ["cyan", "blue", "red", "purple"],
+    hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple"],
+  } ];
+  public pieChartEventStatusLegend = true;
+  public pieChartEventStatusPlugins = [];
+  
+  public pieChartOptions: ChartOptions<'pie'> = {
+    responsive: true,
+  };
+
+  //Thống kê số sự kiện được ban tổ chức làm ra
+  public pieChartEventByOrganizationOptions: ChartOptions<'pie'> = {
+    responsive: false,
+  };
+  public pieChartEventByOrganizationLabels: string[] = [];
+  public pieChartEventByOrganizationDatasets = [ {
+    data: [ 0, 0, 0, 0 ],
+    backgroundColor: ["cyan", "blue", "red", "purple"],
+    hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple"],
+  } ];
+  public pieChartEventByOrganizationLegend = true;
+  public pieChartEventByOrganizationPlugins = [];
   
 
+  // public pieChartLabels = [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ];
+  // public pieChartDatasets = [ {
+  //   data: [ 300, 500, 100 ],
+  //   backgroundColor: ["red", "green", "blue"],
+  //   hoverBackgroundColor: ["darkred", "darkgreen", "darkblue"],
+  // } ];
+  // public pieChartLegend = true;
+  // public pieChartPlugins = [];
+
+  // Thống kê doanh thu
   public barChartLegend = true;
   public barChartPlugins = [];
   public barChartData: ChartConfiguration<'bar'>['data'] = {
     labels: [ '07/2024', '08/2024', '09/2024', '10/2024', '11/2024', '12/2024' ],
     datasets: [
-      { data: [] },
+      { 
+        data: [],
+        backgroundColor: ["cyan"],
+        hoverBackgroundColor: ["darkcyan"],
+       },
     ]
   };
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
@@ -44,6 +94,7 @@ export class DashboardAdminComponent {
 
   constructor(
     private categoryService: CategoryService,
+    private organizationService: OrganizationService,
     private eventService: EventService,
     private ticketService: TicketService,
     private cdRef: ChangeDetectorRef,
@@ -51,6 +102,7 @@ export class DashboardAdminComponent {
 
   ngOnInit(): void {
     this.getAllCategories();
+    this.getAllOrganizations();
     this.getAllEvents();
     this.getAllTickets();
   }
@@ -70,6 +122,21 @@ export class DashboardAdminComponent {
     });
   }
 
+  getAllOrganizations() {
+    this.organizationService.getOrganizations().subscribe({
+      next: (organizations: any) => {
+        this.organizations = organizations;
+        this.pieChartEventByOrganizationLabels = this.organizations.map(organization => organization.name);
+      },
+      complete: () => {
+        console.log('Completed');
+      },
+      error: (error: any) => {
+        console.error('Error fetching organizations:', error);
+      }
+    }); 
+  }
+
   getAllEvents() {
     this.eventService.getAllEventsAdmin().subscribe({
       next: (events: any) => {
@@ -77,7 +144,41 @@ export class DashboardAdminComponent {
         const eventCounts = this.categories.map(category => {
           return this.events.filter(event => event.category_name === category.name).length;
         });
-        this.pieChartEventDatasets = [{ data: eventCounts }];
+        this.pieChartEventDatasets = [{ 
+          data: eventCounts,
+          backgroundColor: ["cyan", "blue", "red", "purple", "yellow", "orange", "brown"],
+          hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple", "darkyellow", "darkorange", "darkbrown"],	 
+        }];
+
+        const eventStatusCounts = [0, 0, 0, 0]; // Active, Pending, Cancelled
+
+        this.events.forEach(event => {
+          if (event.status === 'active') {
+            eventStatusCounts[0]++;
+          } else if (event.status === 'completed') {
+            eventStatusCounts[3]++;
+          } else if (event.status === 'pending') {
+            eventStatusCounts[1]++;
+          } else if (event.status === 'cancelled') {
+            eventStatusCounts[2]++;
+          }
+        });
+
+        this.pieChartEventStatusDatasets = [{ 
+          data: eventStatusCounts,
+          backgroundColor: ["green", "blue", "red", "purple"],
+          hoverBackgroundColor: ["darkgreen", "darkblue", "darkred", "darkpurple"],
+        }];
+
+        const eventByOrganizationCounts = this.organizations.map(organization => {
+          return this.events.filter(event => event.organization_name === organization.name).length;
+        });
+        this.pieChartEventByOrganizationDatasets = [{ 
+          data: eventByOrganizationCounts,
+          backgroundColor: ["cyan", "blue", "red", "purple", "yellow"],
+          hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple", "darkyellow"],
+        }];
+        // this.cdRef.detectChanges();
       },
       complete: () => {
         console.log('Completed');
@@ -92,6 +193,7 @@ export class DashboardAdminComponent {
     this.ticketService.getAllTicketsAdmin().subscribe({
       next: (tickets: any) => {
         this.tickets = tickets;
+        this.tickets = this.tickets.filter(ticket => ticket.status === 'success');
         debugger
         this.updateLineChartData();
       },
@@ -134,7 +236,9 @@ export class DashboardAdminComponent {
       datasets: [
         {
           data: data,  // Set the updated prices
-          label: 'Ticket Price',
+          label: 'Doanh thu (VNĐ)',
+          backgroundColor: ["cyan"],
+          hoverBackgroundColor: ["darkcyan"],
         }
       ]
     };

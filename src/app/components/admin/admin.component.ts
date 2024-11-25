@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     if (this.router.url === '/admin') {
-      this.router.navigate(['/admin/events']);
+      this.router.navigate(['/admin/dashboard']);
     }
   }
 
