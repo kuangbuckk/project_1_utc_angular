@@ -15,6 +15,8 @@ import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-
 import { TicketCategoryInsertAdminComponent } from "./ticket-category/insert/ticket-category-insert-admin.component";
 import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/ticket-category-update-admin.component";
 import { AdminGuard } from "../../guard/admin.guard";
+import { UsersAdminComponent } from "./users/users-admin.component";
+import { UsersUpdateAdminComponent } from "./users/update/users-update.component";
 
 const routes: Routes = [
     //Admin
@@ -28,6 +30,7 @@ const routes: Routes = [
             {path: 'organizations', component: OrganizationsComponent},
             {path: 'events', component: EventsAdminComponent},
             {path: 'events/:id/ticket-categories', component: TicketCategoryAdminComponent},
+            {path: 'users', component: UsersAdminComponent},
 
             //actions
             {path: 'categories/insert', component: CategoriesInsertAdminComponent},
@@ -38,6 +41,7 @@ const routes: Routes = [
             {path: 'events/edit/:id', component: EventsUpdateAdminComponent},
             {path: 'events/:id/ticket-categories/insert', component: TicketCategoryInsertAdminComponent},
             {path: 'events/:id/ticket-categories/edit/:ticketCategoryId', component: TicketCategoryUpdateAdminComponent},
+            {path: 'users/edit/:id',component: UsersUpdateAdminComponent}
         ]
     },
 ];

@@ -16,6 +16,8 @@ import { EventsUpdateAdminComponent } from "./events/update/events-update-admin.
 import { TicketCategoryAdminComponent } from "./ticket-category/ticket-category-admin.component";
 import { TicketCategoryInsertAdminComponent } from "./ticket-category/insert/ticket-category-insert-admin.component";
 import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/ticket-category-update-admin.component";
+import { UsersAdminComponent } from "./users/users-admin.component";
+import { UsersUpdateAdminComponent } from './users/update/users-update.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/tic
         EventsUpdateAdminComponent,
         TicketCategoryAdminComponent,
         TicketCategoryInsertAdminComponent,
-        TicketCategoryUpdateAdminComponent
+        TicketCategoryUpdateAdminComponent,
+        UsersAdminComponent,
+        UsersUpdateAdminComponent
     ],
     imports: [
         AdminRoutingModule,

@@ -6,6 +6,7 @@ import { LoginDTO } from '../dtos/user/login.dto';
 import { environment } from '../enviroments/enviroment';
 import { UserResponse } from '../responses/user.response';
 import { UserUpdateDTO } from '../dtos/user/user.update.dto';
+import { UserUpdateAdminDTO } from '../dtos/user/user.admin.update.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { UserUpdateDTO } from '../dtos/user/user.update.dto';
 export class UserService {
   private apiRegsiter = `${environment.apiBaseUrl}/users/register`
   private apiLogin = `${environment.apiBaseUrl}/users/login`
+  private apiAdminRetrieveAllUsers = `${environment.apiBaseUrl}/users/admin/retrieveAll`
   private apiuserDetail = `${environment.apiBaseUrl}/users/details`
   private apiUpdateUser = `${environment.apiBaseUrl}/users/update`
 
@@ -38,6 +40,14 @@ export class UserService {
     })
   }
 
+  retrieveAllUsers():Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.apiAdminRetrieveAllUsers)
+  }
+
+  updateUserAdmin(userId: number, userUpdateAdminDTO: UserUpdateAdminDTO):Observable<any>{
+    return this.http.put(`${environment.apiBaseUrl}/users/admin/updateUser/${userId}`, userUpdateAdminDTO)
+  }
+
   getUserDetail(token: string) {
     return this.http.post(this.apiuserDetail, {
       headers: new HttpHeaders({
@@ -45,6 +55,10 @@ export class UserService {
         'Authorization': `Bearer ${token}`,
       })
     }, this.apiConfig)
+  }
+
+  getUserByIdAdminOnly(userId: number):Observable<UserResponse>{
+    return this.http.get<UserResponse>(`${environment.apiBaseUrl}/users/admin/${userId}`)
   }
 
   saveUserResponseToLocalStorage(userResponse?: UserResponse) {

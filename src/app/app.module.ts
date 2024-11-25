@@ -38,7 +38,7 @@ import { OrganizerRoutingModule } from './components/admin.organizer/organizer-r
     MyOrdersComponent,
     MyTicketOrderDetailsComponent,
     MyAccountComponent,
-    MyTicketOrdersComponent
+    MyTicketOrdersComponent,
   ],
   imports: [
     CommonModule,
