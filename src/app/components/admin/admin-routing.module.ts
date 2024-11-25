@@ -17,6 +17,7 @@ import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/tic
 import { AdminGuard } from "../../guard/admin.guard";
 import { UsersAdminComponent } from "./users/users-admin.component";
 import { UsersUpdateAdminComponent } from "./users/update/users-update.component";
+import { DashboardAdminComponent } from "./dashboard/dashboard-admin.component";
 
 const routes: Routes = [
     //Admin
@@ -26,6 +27,7 @@ const routes: Routes = [
         // canActivate: [AdminGuard],
         // canActivateChild: [AdminGuard],
         children: [
+            {path: 'dashboard', component: DashboardAdminComponent},
             {path: 'categories', component: CategoriesAdminComponent},
             {path: 'organizations', component: OrganizationsComponent},
             {path: 'events', component: EventsAdminComponent},

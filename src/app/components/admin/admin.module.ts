@@ -18,6 +18,8 @@ import { TicketCategoryInsertAdminComponent } from "./ticket-category/insert/tic
 import { TicketCategoryUpdateAdminComponent } from "./ticket-category/update/ticket-category-update-admin.component";
 import { UsersAdminComponent } from "./users/users-admin.component";
 import { UsersUpdateAdminComponent } from './users/update/users-update.component';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations: [
@@ -35,12 +37,14 @@ import { UsersUpdateAdminComponent } from './users/update/users-update.component
         TicketCategoryInsertAdminComponent,
         TicketCategoryUpdateAdminComponent,
         UsersAdminComponent,
-        UsersUpdateAdminComponent
+        UsersUpdateAdminComponent,
+        DashboardAdminComponent,
     ],
     imports: [
         AdminRoutingModule,
         CommonModule,
-        FormsModule
+        FormsModule,
+        NgChartsModule
     ]
 })
 

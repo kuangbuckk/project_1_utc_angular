@@ -9,6 +9,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Tên loại vé</th>
+                            <th scope="col">Giá</th>
                             <th scope="col">Trạng thái vé</th>
                             <th scope="col">Email người mua</th>
                             <th scope="col">Tên người mua</th>
@@ -18,6 +19,7 @@
                         <tr *ngFor="let ticket of tickets">
                             <th scope="row">{{ ticket.id }}</th>
                             <th scope="row">{{ ticket.ticket_category_name }}</th>
+                            <th scope="row">{{ ticket.price }}</th>
                             <th scope="row">{{ ticket.status }}</th>
                             <td>{{ ticket.user_email }}</td>
                             <td>{{ ticket.user_name }}</td>

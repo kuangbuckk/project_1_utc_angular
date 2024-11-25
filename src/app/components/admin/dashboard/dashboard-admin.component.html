@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="container">
+        <div>
+            <h1>Thống kê thể loại sự kiện</h1>
+            <canvas baseChart
+                [type]="'pie'"
+                [datasets]="pieChartEventDatasets"
+                [labels]="pieChartEventLabels"
+                [options]="pieChartEventOptions"
+                [plugins]="pieChartEventPlugins"
+                [legend]="pieChartEventLegend">
+            </canvas>
+        </div>
+        <div id="ticket-bar-chart">
+            <h1>Thống kê doanh thu</h1>
+            <canvas baseChart
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [type]="'bar'">
+            </canvas>
+        </div>
+    </div>
+</div>
+

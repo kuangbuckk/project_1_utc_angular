@@ -13,6 +13,10 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
+  getAllEventsAdmin(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.apiGetEvents + '/getAll');
+  }
+
   getEvents(page: number, limit: number):Observable<Event[]>{
       const params = new HttpParams()
       .set('page', page.toString())
