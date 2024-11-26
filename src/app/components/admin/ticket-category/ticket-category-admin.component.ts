@@ -54,6 +54,7 @@ export class TicketCategoryAdminComponent implements OnInit {
     forkJoin(ticketRequests).subscribe({
       next: (results: any[]) => {
         this.tickets = results.flat();
+        this.tickets = this.tickets.sort((a, b) => b.id - a.id);
         debugger;
       },
       complete: () => {

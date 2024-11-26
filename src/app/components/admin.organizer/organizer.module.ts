@@ -10,6 +10,8 @@ import { TicketCategoryOrganizerComponent } from './ticket-category/ticket-categ
 import { BrowserModule } from '@angular/platform-browser';
 import { TicketCategoryInsertOrganizerComponent } from './ticket-category/insert/ticket-category-insert-organizer.component';
 import { TicketCategoryUpdateOrganizerComponent } from './ticket-category/update/ticket-category-update-organizer.component';
+import { DashboardOrganizerComponent } from './dashboard/dashboard-organizer.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations: [
@@ -18,13 +20,15 @@ import { TicketCategoryUpdateOrganizerComponent } from './ticket-category/update
         EventsInsertOrganizerComponent,
         TicketCategoryOrganizerComponent,
         TicketCategoryInsertOrganizerComponent,
-        TicketCategoryUpdateOrganizerComponent
+        TicketCategoryUpdateOrganizerComponent,
+        DashboardOrganizerComponent
     ],
     imports: [
         OrganizerRoutingModule,
         CommonModule,
         FormsModule,
         BrowserModule,
+        NgChartsModule
     ]
 })
 

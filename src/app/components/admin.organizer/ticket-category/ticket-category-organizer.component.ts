@@ -55,6 +55,7 @@ export class TicketCategoryOrganizerComponent {
     forkJoin(ticketRequests).subscribe({
       next: (results: any[]) => {
         this.tickets = results.flat();
+        this.tickets.sort((a, b) => b.id - a.id);
         debugger;
       },
       complete: () => {

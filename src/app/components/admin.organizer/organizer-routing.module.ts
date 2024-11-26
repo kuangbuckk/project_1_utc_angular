@@ -9,6 +9,7 @@ import { TicketCategoryInsertOrganizerComponent } from './ticket-category/insert
 import { TicketCategoryUpdateOrganizerComponent } from './ticket-category/update/ticket-category-update-organizer.component';
 import { OrganizerGuard } from "../../guard/organization.guard";
 import { EventsInsertOrganizerComponent } from './event/insert/events-insert-organizer.component';
+import { DashboardOrganizerComponent } from './dashboard/dashboard-organizer.component';
 
 const routes: Routes = [
     {
@@ -18,6 +19,7 @@ const routes: Routes = [
         children: [
             {path: 'events', component: EventOrganizerComponent},
             {path: 'events/:id/ticketCategory', component: TicketCategoryOrganizerComponent},
+            {path: 'dashboard', component: DashboardOrganizerComponent},
 
             //actions
             {path: 'events/insert', component: EventsInsertOrganizerComponent},

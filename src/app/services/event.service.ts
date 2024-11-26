@@ -42,6 +42,10 @@ export class EventService {
       return this.http.get<Event[]>(`${this.apiGetEvents}/organization/${organizationId}`, {params})
   }
 
+  getAllEventsByOrganizationId(organizationId: number): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.apiGetEvents}/organization/${organizationId}/retrieveAll`);
+  }
+
   searchEventByKeyword(keyword: string, page: number, itemsPerPage: number): Observable<Event[]> {
     const params = new HttpParams()
       .set('keyword', keyword)

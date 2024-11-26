@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Thống kê dữ liệu của {{ organization_name }}</h1>
+    <div class="row">
+        <div class="col-6">
+            <h2>Tình trạng các sự kiện</h2>
+            <canvas baseChart
+                [type]="'pie'"
+                [datasets]="pieChartEventStatusDatasets"
+                [labels]="pieChartEventStatusLabels"
+                [plugins]="pieChartEventStatusPlugins"
+                [legend]="pieChartEventStatusLegend">
+            </canvas>
+        </div>
+    </div>
+    <div id="ticket-bar-chart" class="row">
+        <h2>Thống kê doanh thu</h2>
+        <canvas baseChart
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [type]="'bar'">
+        </canvas>
+    </div>
+</div>

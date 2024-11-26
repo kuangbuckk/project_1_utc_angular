@@ -21,6 +21,10 @@ export class TicketService {
         return this.http.get<Ticket[]>(`${this.apiTicket}/admin/retrieveAll`)
     }
 
+    getAllTicketsOrganizer():Observable<Ticket[]>{
+        return this.http.get<Ticket[]>(`${this.apiTicket}/organization/retrieveAll`)
+    }
+
     getTicketsByTicketCategoryId(ticketCategoryId: number):Observable<Ticket[]>{
         return this.http.get<Ticket[]>(`${this.apiTicket}/ticketCategory/${ticketCategoryId}`)
     }
