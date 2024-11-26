@@ -26,7 +26,7 @@
   </div>
   <div class="container">
     <div id="event-container" class="row" *ngIf="events && events.length > 0; else noEvent">
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of activated_events">
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mb-2" *ngFor="let event of events">
           <div class="card event-item" style="width: 18rem;" (click)="goToDetail(event.id)">
               <img [src]="event.url" class="card-img-top" alt="event-img">
               <div class="card-body">
@@ -36,13 +36,13 @@
           </div>
       </div>
     </div>
+    <ng-template #noEvent>
+      <div class="container">
+        <h2 class="text-center">Hiện tại chưa có sự kiện nào</h2>
+      </div>
+    </ng-template>
   </div>
-  <ng-template #noEvent>
-    <div class="container">
-      <h2 class="text-center">Hiện tại chưa có sự kiện nào</h2>
-    </div>
-  </ng-template>
-<div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
     <nav aria-label="Page navigation">
       <ul class="pagination">
         <li class="page-item" *ngIf="currentPage > 0">

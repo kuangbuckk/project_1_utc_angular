@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   events: Event[] = [];
-  activated_events: Event[] = [];
-  // completed_events: Event[] = [];
   categories: Category[] = [];
   selectedCategoryId: number  = 0;
   currentPage: number = 0;
@@ -22,6 +20,10 @@ export class HomeComponent {
   totalPages:number = 0;
   visiblePages: number[] = [];
   keyword: string = '';
+
+  activated_events: Event[] = [];
+  completed_events: Event[] = [];
+  upcoming_events: Event[] = [];
 
   constructor(
     private router: Router,
@@ -59,7 +61,8 @@ export class HomeComponent {
           event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
         });
         this.events = response.events;
-        this.activated_events = this.events.filter(event => event.status === 'active');
+        this.events = this.events.filter(event => event.status === 'active');
+        this.upcoming_events = this.events.filter(event => event.status === 'pending');
         this.totalPages = response.totalPages;
         this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
       },
@@ -80,6 +83,7 @@ export class HomeComponent {
           event.url = `${environment.apiBaseUrl}/events/images/${event.thumbnail}`;
         });
         this.events = response.events;
+        // this.events = this.events.filter(event => event.status === 'active');
         this.totalPages = response.totalPages;
         this.visiblePages = this.generateVisiblePageArray(this.currentPage, this.totalPages);
       },
