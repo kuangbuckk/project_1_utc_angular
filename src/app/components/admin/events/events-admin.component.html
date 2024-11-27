@@ -1,6 +1,9 @@
 <h1>Quản lý các sự kiện</h1>
-<button class="btn btn-success mb-2 mr-4" (click)="insertEvent()">Thêm sự kiện</button>
-<button class="btn btn-primary mb-2" (click)="exportExcel()">Xuất dữ liệu báo cáo</button>
+<button class="btn btn-success mb-2 btn-excel" (click)="insertEvent()">Thêm sự kiện</button>
+<button class="btn btn-primary mb-2 btn-excel" (click)="exportExcel()">Xuất dữ liệu báo cáo</button>
+<button class="btn btn-primary mb-2 btn-excel" (click)="exportExcelByStatus()">Xuất dữ liệu theo tình trạng</button>
+<button class="btn btn-primary mb-2 btn-excel" (click)="exportExcelByCategory()">Xuất dữ liệu theo thể loại</button>
+
 <div>
 <table class="table table-bordered">
     <thead>
