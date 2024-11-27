@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Organization } from '../../../model/organization';
 import { OrganizationService } from '../../../services/organization.service';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-organizations',
   templateUrl: './organizations.component.html',
@@ -13,6 +13,7 @@ export class OrganizationsComponent {
   constructor(
     private organizationService: OrganizationService,
     private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +56,29 @@ export class OrganizationsComponent {
         console.error('Error deleting organization:', error);
       }
     });
+  }
+
+  exportExcel(){
+    const fileUrl = 'http://localhost:8090/api/v1/excel/export/organizations'; // Replace with your API endpoint
+    this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
+      (response: Blob) => {
+        // Create a blob from the response
+        const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary anchor to download the file
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `organizations.xls`; // Desired file name
+        a.click();
+
+        // Revoke the object URL to free memory
+        window.URL.revokeObjectURL(url);
+      },
+      error => {
+        console.error('Error downloading file', error);
+      }
+    );
   }
 
 }
