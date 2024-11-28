@@ -22,6 +22,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { MyTicketOrdersComponent } from './components/my-ticket-orders/my-ticket-orders.component';
 import { OrganizerModule } from './components/admin.organizer/organizer.module';
 import { OrganizerRoutingModule } from './components/admin.organizer/organizer-routing.module';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { OrganizerRoutingModule } from './components/admin.organizer/organizer-r
     MyOrdersComponent,
     MyTicketOrderDetailsComponent,
     MyAccountComponent,
-    MyTicketOrdersComponent
+    MyTicketOrdersComponent,
+    FeedbackComponent
   ],
   imports: [
     CommonModule,

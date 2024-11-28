@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nội dung</th>
+            <th scope="col">Loại phản ánh</th>
+            <th scope="col">Trạng thái duyệt</th>
+            <th scope="col">Hành động</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="feedbacks && feedbacks.length > 0; else nofeedbacks">
+        <tr *ngFor="let feedback of feedbacks">
+            <th scope="row">{{ feedback.id }}</th>
+            <td>{{ feedback.email }}</td>
+            <td>{{ feedback.content }}</td>
+            <td>{{ feedback.type }}</td>
+            <td>
+              <select [(ngModel)]="feedback.status" (change)="updateFeedbackStatus(feedback.id, feedback.status)">
+                <option value="pending">Pending</option>
+                <option value="answered">Answered</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+          </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteFeedback(feedback.id)">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+    <ng-template #nofeedbacks>
+        <tr>
+            <td colspan="8" class="text-center">Chưa có phản ánh nào.</td>
+        </tr>
+    </ng-template>
+</table>

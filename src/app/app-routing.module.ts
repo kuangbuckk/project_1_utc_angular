@@ -18,6 +18,7 @@ import { MyAccountComponent } from "./components/my-account/my-account.component
 import { MyTicketOrdersComponent } from "./components/my-ticket-orders/my-ticket-orders.component";
 import { OrganizerComponent } from "./components/admin.organizer/organizer.component";
 import { OrganizerGuard } from "./guard/organization.guard";
+import { FeedbackComponent } from "./components/feedback/feedback.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path: 'my-order/:ticketOrderId', component: MyOrdersComponent, canActivate: [UserGuard]},
     {path: 'my-order/ticketDetails/:id', component: MyTicketOrderDetailsComponent, canActivate: [UserGuard]},
     {path: 'my-account', component: MyAccountComponent, canActivate: [UserGuard]},
+    {path: 'feedback', component: FeedbackComponent, canActivate: [UserGuard]},
     //Admin
     {
         path: 'admin', 

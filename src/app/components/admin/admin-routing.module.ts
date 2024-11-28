@@ -18,6 +18,7 @@ import { AdminGuard } from "../../guard/admin.guard";
 import { UsersAdminComponent } from "./users/users-admin.component";
 import { UsersUpdateAdminComponent } from "./users/update/users-update.component";
 import { DashboardAdminComponent } from "./dashboard/dashboard-admin.component";
+import { FeedbackAdminComponent } from "./feedback/feedback-admin.component";
 
 const routes: Routes = [
     //Admin
@@ -33,6 +34,7 @@ const routes: Routes = [
             {path: 'events', component: EventsAdminComponent},
             {path: 'events/:id/ticket-categories', component: TicketCategoryAdminComponent},
             {path: 'users', component: UsersAdminComponent},
+            {path: 'feedbacks', component: FeedbackAdminComponent},
 
             //actions
             {path: 'categories/insert', component: CategoriesInsertAdminComponent},

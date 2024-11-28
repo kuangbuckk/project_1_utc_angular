@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div id="feedback-container" class="container">
+    <form #feedbackForm="ngForm">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="feedback-form mx-auto">
+                    <h2 class="feedback-header">Góp ý</h2>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" 
+                            [(ngModel)]="feedbackDTO.email" 
+                            (focus)="feedbackForm.form.markAsTouched()"
+                            required
+                            name="email"
+                            class="form-control" 
+                            id="email">
+                        <div class="divide-nospace"></div>
+                        <p class="text-danger" id="email-text-danger"
+                            *ngIf="feedbackDTO.email.length === 0 && feedbackForm.form.touched">Email không được bỏ trống</p>
+                    </div>
+                    <div class="mt-3"></div>
+                    <div class="form-group">
+                        <label for="type">Thể loại góp ý</label>
+                        <!-- <input type="text" 
+                            [(ngModel)]="feedbackDTO.type" 
+                            name="phone"
+                            class="form-control" 
+                            id="type"> -->
+                            <select name="type" 
+                            [(ngModel)]="feedbackDTO.type">
+                                <option value="Góp ý">Góp ý</option>
+                                <option value="Khiếu nại">Khiếu nại</option>
+                                <option value="Phản hồi">Phản hồi</option>
+                            </select>
+                        <div class="divide-nospace"></div>
+                    </div>
+                    <div class="mt-3"></div>
+                    <div class="form-group">
+                        <label for="">Nội dung phản hồi</label>
+                        <!-- <input type="text" 
+                        [(ngModel)]="feedbackDTO.content" 
+                        name="content"
+                        required
+                        class="form-control" id="content"> -->
+                        <textarea [(ngModel)]="feedbackDTO.content" 
+                        name="content"
+                        required
+                        class="form-control" id="content" rows="3"></textarea>
+                        <div class="divide-nospace"></div>
+                    </div>
+                    <div class="mt-2"></div>
+                    <button type="button" 
+                        (click)="sendFeedback()"
+                        class="feedback-button" id="feedback-button-2">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

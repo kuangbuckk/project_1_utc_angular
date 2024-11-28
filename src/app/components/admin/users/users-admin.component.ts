@@ -29,6 +29,7 @@ export class UsersAdminComponent {
     this.userService.retrieveAllUsers().subscribe({
       next: (response: UserResponse[]) => {
         this.users = response;
+        this.users = this.users.sort((a, b) => a.id - b.id);
       },
       complete: () => {
       },
