@@ -1,0 +1,35 @@
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="response-form mx-auto">
+                    <h2 class="response-header">Phản hồi</h2>
+                    <div class="form-group">
+                        <label for="recipient">Người nhận</label>
+                        <input type="text" [(ngModel)]="responseDTO.recipient" (focus)="responseDTO.form.markAsTouched()" required
+                            name="recipient" class="form-control" id="recipient">
+                        <div class="divide-nospace"></div>
+                    </div>
+                    <div class="mt-3"></div>
+                    <div class="form-group">
+                        <label for="subject">Tiêu đề</label>
+                        <input type="text" [(ngModel)]="responseDTO.subject" required
+                            name="subject" class="form-control" id="subject">
+                        <div class="divide-nospace"></div>
+                    </div>
+                    <div class="mt-3"></div>
+                    <div class="form-group">
+                        <label for="msgBody">Nội dung</label>
+                        <textarea [(ngModel)]="responseDTO.msgBody"
+                        name="msgBody"
+                        required
+                        class="form-control" id="msgBody" rows="3"></textarea>
+                        <div class="divide-nospace"></div>
+                    </div>
+                    <div class="mt-2"></div>
+                    <button class="btn btn-primary" type="button" (click)="sendResponse()" class="response-button" id="response-button-2">Gửi phản hồi</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -18,6 +18,10 @@ export class FeedbackService {
         return this.http.get<Feedback[]>(this.apiFeedback);
     }
 
+    getFeedbackById(feedbackId: number): Observable<Feedback> {
+        return this.http.get<Feedback>(`${this.apiFeedback}/${feedbackId}`);
+    }
+
     sendFeedback(FeedbackDTO: FeedbackDTO): Observable<any> {
         return this.http.post(this.apiFeedback, FeedbackDTO);
     }

@@ -21,6 +21,7 @@ import { UsersUpdateAdminComponent } from './users/update/users-update.component
 import { DashboardAdminComponent } from './dashboard/dashboard-admin.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FeedbackAdminComponent } from './feedback/feedback-admin.component';
+import { ResponseComponent } from './feedback/response/response.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { FeedbackAdminComponent } from './feedback/feedback-admin.component';
         UsersUpdateAdminComponent,
         DashboardAdminComponent,
         FeedbackAdminComponent,
+        ResponseComponent,
     ],
     imports: [
         AdminRoutingModule,

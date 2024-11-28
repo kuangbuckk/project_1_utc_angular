@@ -19,6 +19,7 @@ import { UsersAdminComponent } from "./users/users-admin.component";
 import { UsersUpdateAdminComponent } from "./users/update/users-update.component";
 import { DashboardAdminComponent } from "./dashboard/dashboard-admin.component";
 import { FeedbackAdminComponent } from "./feedback/feedback-admin.component";
+import { ResponseComponent } from "./feedback/response/response.component";
 
 const routes: Routes = [
     //Admin
@@ -35,6 +36,7 @@ const routes: Routes = [
             {path: 'events/:id/ticket-categories', component: TicketCategoryAdminComponent},
             {path: 'users', component: UsersAdminComponent},
             {path: 'feedbacks', component: FeedbackAdminComponent},
+            {path: 'feedbacks/response/:id', component: ResponseComponent},
 
             //actions
             {path: 'categories/insert', component: CategoriesInsertAdminComponent},

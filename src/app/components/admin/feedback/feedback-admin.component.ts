@@ -24,7 +24,8 @@ export class FeedbackAdminComponent {
     this.feedbackService.getAllFeedbacks().subscribe({
       next: (response: Feedback[]) => {
         this.feedbacks = response;
-        this.feedbacks = this.feedbacks.sort((a, b) => a.id - b.id);
+        debugger;
+        this.feedbacks = this.feedbacks.sort((a, b) => b.id - a.id);
       },
       complete: () => {
       },
@@ -59,5 +60,9 @@ export class FeedbackAdminComponent {
         console.log('error: ', error);
       }
     })
+  }
+
+  responseFeedback(feedback: Feedback) {
+    this.router.navigate(['/admin/feedbacks/response', feedback.id]);
   }
 }
