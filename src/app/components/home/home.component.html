@@ -1,4 +1,6 @@
 <app-header></app-header>
+
+
 <div class="container">
   <div class="container mt-4 mb-2">
       <form class="d-flex" (ngSubmit)="searchEvents()">
@@ -11,6 +13,7 @@
           name="search"
           id="input-search-textbox"
         />
+        
         <button class="btn btn-outline-success" type="submit" id="search-button">Tìm</button>
       </form>
       <div id="category-containter">
@@ -22,6 +25,24 @@
           </div>
         </div>
       </div>
+
+      
+      <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="ratio ratio-16x9">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://salt.tkbcdn.com/ts/ds/29/ed/77/439e44664d7c85551d40a5e980c60dcb.mp4" type="video/mp4">
+                        
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      
+
+
       <!-- for categories later -->
   </div>
   <div class="container">

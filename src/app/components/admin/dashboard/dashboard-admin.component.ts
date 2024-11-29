@@ -29,8 +29,8 @@ export class DashboardAdminComponent {
   public pieChartEventLabels: string[] = []
   public pieChartEventDatasets = [ {
     data: [ 300, 500, 100, 0 ],
-    backgroundColor: ["green", "blue", "red", "purple", "yellow", "orange", "brown"],
-    hoverBackgroundColor: ["darkgreen", "darkblue", "darkred", "darkpurple", "darkyellow", "darkorange", "darkbrown"],	
+    backgroundColor: ["#00bcd4", "#3f51b5", "#e91e63", "#ff9800", "#4caf50", "#9c27b0", "#607d8b"],
+    hoverBackgroundColor: ["#0097a7", "#303f9f", "#c2185b", "#f57c00", "#388e3c", "#7b1fa2", "#455a64"],	
   } ];
   public pieChartEventLegend = true;
   public pieChartEventPlugins = [];
@@ -42,14 +42,29 @@ export class DashboardAdminComponent {
   public pieChartEventStatusLabels = [ ['Đang diễn ra'], ['Chờ duyệt'], ['Huỷ'], ['Đã xong']];
   public pieChartEventStatusDatasets = [ {
     data: [ 0, 0, 0, 0 ],
-    backgroundColor: ["cyan", "blue", "red", "purple"],
-    hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple"],
+    backgroundColor: ["#00bcd4", "#3f51b5", "#e91e63", "#ff9800"],
+    hoverBackgroundColor: ["#0097a7", "#303f9f", "#c2185b", "#f57c00"],
   } ];
   public pieChartEventStatusLegend = true;
   public pieChartEventStatusPlugins = [];
   
-  public pieChartOptions: ChartOptions<'pie'> = {
+  public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          color: '#37474f'  // Darker text for better readability
+        }
+      }
+    },
+    elements: {
+      arc: {
+        borderWidth: 2,  // Adds a nice border between segments
+        borderColor: '#ffffff'  // White borders between segments
+      }
+    }
   };
 
   //Thống kê số sự kiện được ban tổ chức làm ra
@@ -59,8 +74,8 @@ export class DashboardAdminComponent {
   public pieChartEventByOrganizationLabels: string[] = [];
   public pieChartEventByOrganizationDatasets = [ {
     data: [ 0, 0, 0, 0 ],
-    backgroundColor: ["cyan", "blue", "red", "purple"],
-    hoverBackgroundColor: ["darkcyan", "darkblue", "darkred", "darkpurple"],
+    backgroundColor: ["#00bcd4", "#3f51b5", "#e91e63", "#ff9800", "#4caf50"],
+    hoverBackgroundColor: ["#0097a7", "#303f9f", "#c2185b", "#f57c00", "#388e3c"],
   } ];
   public pieChartEventByOrganizationLegend = true;
   public pieChartEventByOrganizationPlugins = [];
