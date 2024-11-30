@@ -1,42 +1,24 @@
 <app-header></app-header>
 <div class="container-fluid">
-    <div id="event-container" class="row">
-        <h2 class="text-center mt-4 mb-5">Chi tiết sự kiện</h2>
-        <div class="col-lg-6 col-md-6">
-            <div class="container">
-                <div class="container-body">
-                  <h2 class="container-title">{{ event?.name }}</h2>
-                  <p class="card-text">{{ event?.description}}</p>
-                  <h3 href="#" class="green"><i class="fas fa-map-pin"></i> Địa điểm tổ chức:</h3>
-                  <p>{{ event?.location }}</p>
-                  <h3><i class="far fa-calendar"></i> Thời gian tổ chức:</h3>
-                  <p>{{ formattedStartDate }} - {{ formattedEndDate }}</p>
+  <div id="event-container" class="row">
+    <h2 class="text-center mt-4 mb-5">Chi tiết sự kiện</h2>
+    <div class="col-md-12 d-flex justify-content-center">
+        <div class="ticket-wrapper">
+            <div class="ticket-image-large">
+                <img [src]="event?.event_images?.[0]?.image_url || 'default-image.jpg'" alt="Event Image">
+            </div>
+            <div class="ticket-divider"></div>
+            <div class="ticket-content">
+                <h2 class="ticket-title">{{ event?.name }}</h2>
+                <p class="ticket-description">{{ event?.description }}</p>
+                <div class="ticket-details">
+                    <p><i class="fas fa-map-pin"></i> Địa điểm: {{ event?.location }}</p>
+                    <p><i class="far fa-calendar"></i> Thời gian: {{ formattedStartDate }} - {{ formattedEndDate }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6">
-            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div *ngFor="let image of event?.event_images; let i = index" 
-                       class="carousel-item" [ngClass]="{'active': i === currentImageIndex}">
-                    <div class="square-image">
-                      <img [src]="image.image_url" class="event-image" alt="Event Image">
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" 
-                        data-bs-slide="prev" (click)="previousImage()">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" 
-                        data-bs-slide="next" (click)="nextImage()">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-        </div>
     </div>
+</div>
     <div class="container" id="ticket-categories-container">
         <h2>Các loại vé</h2>
         <div class="ticket-categories">
