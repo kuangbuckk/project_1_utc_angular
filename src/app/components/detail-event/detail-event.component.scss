@@ -1,5 +1,74 @@
 @import '../../../styles/shared-styles.scss';
+.ticket-wrapper {
+    display: flex;
+    align-items: stretch; /* Ensure content and image align properly */
+    background: white;
+    border: 2px dashed $main-tint-color;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 16px;
 
+    .ticket-image-large {
+        flex: 1.5; /* More space for the image */
+        border-radius: 16px 0 0 16px; /* Round only left corners */
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover img {
+            transform: scale(1.1);
+        }
+    }
+
+    .ticket-divider {
+        width: 2px;
+        background: $main-tint-color;
+        margin: 0 16px; /* Space between image and text */
+        border-left: 2px dashed $main-tint-color; /* Dashed style for ticket effect */
+    }
+
+    .ticket-content {
+        flex: 1; /* Allocate space for the content */
+        padding: 16px;
+        text-align: left;
+
+        .ticket-title {
+            font-size: 28px; /* Large title */
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: $main-tint-color;
+        }
+
+        .ticket-description {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .ticket-details {
+            font-size: 16px;
+            color: #666;
+
+            p {
+                margin: 12px 0;
+
+                i {
+                    margin-right: 8px;
+                    color: $main-tint-color;
+                }
+            }
+        }
+    }
+}
 .ticket-container {
     background-color: #ffffff; /* Nền trắng */
     border: 2px solid #e0e0e0; /* Viền nhẹ giống giấy */
