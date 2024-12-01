@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
+  foo: string = 'bar'; //test ci cd workflow on commit trigger
+  
   constructor(
     private router: Router,
   ) { }
