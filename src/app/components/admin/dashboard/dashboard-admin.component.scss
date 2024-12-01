@@ -1,0 +1,95 @@
+.container-fluid {
+  padding: 24px;
+  background-color: #f8f9fa;
+
+  h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .container {
+    .row {
+      margin-bottom: 40px;
+
+      .col-4 {
+        padding: 16px;
+
+        h3 {
+          color: #34495e;
+          font-size: 18px;
+          margin-bottom: 20px;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        canvas {
+          background: white;
+          border-radius: 8px;
+          padding: 16px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
+    }
+
+    #ticket-bar-chart {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+
+      h2 {
+        color: #2c3e50;
+        font-size: 24px;
+        margin-bottom: 24px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      canvas {
+        padding: 16px;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 16px;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .container {
+      .row {
+        .col-4 {
+          padding: 12px;
+          
+          h3 {
+            font-size: 16px;
+          }
+        }
+      }
+
+      #ticket-bar-chart {
+        padding: 16px;
+        
+        h2 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

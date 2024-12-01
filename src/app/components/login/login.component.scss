@@ -117,3 +117,32 @@
     /* background-color: rgb(105, 244, 181) */
     margin: 20px;
 }
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center; /* Căn giữa dọc */
+}
+
+.password-input-wrapper input {
+    flex: 1; /* Đảm bảo trường nhập chiếm toàn bộ không gian */
+    padding-right: 40px; /* Tạo khoảng trống cho biểu tượng bên phải */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px; /* Cách lề phải 10px */
+    cursor: pointer;
+    font-size: 1.2rem; /* Kích thước biểu tượng */
+    color: #000000; /* Màu trung tính */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #080808; /* Đổi màu khi hover */
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+.password-toggle:active {
+    transform: scale(0.95); /* Hiệu ứng nhấn vào */
+}
