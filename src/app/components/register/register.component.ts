@@ -21,6 +21,8 @@ export class RegisterComponent {
   dateOfBirth: Date;
   address: string;
   isAccepted: boolean;
+  showPassword = false;
+  showRetypePassword = false;
   
   constructor(private router: Router, private userService: UserService) {
     this.email = '';
@@ -69,5 +71,13 @@ export class RegisterComponent {
         }
       }
     })
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleRetypePasswordVisibility() {
+    this.showRetypePassword = !this.showRetypePassword;
   }
 }

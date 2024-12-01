@@ -52,11 +52,15 @@
 
 .password-toggle {
     position: absolute;
-    top: 50%;
     right: 10px;
+    top: 42px;
     transform: translateY(-50%);
-    color: $main-title-color;
     cursor: pointer;
+    color: rgb(103, 103, 103);
+}
+
+.password-toggle:hover {
+    color: rgb(122, 30, 134);
 }
 
 .checkbox-text {

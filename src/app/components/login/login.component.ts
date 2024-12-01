@@ -22,6 +22,7 @@ export class LoginComponent {
   rememberMe: boolean = true;
   selectedRole: Role | undefined;
   userResponse?: UserResponse | undefined;
+  showPassword = false;
 
   constructor(
     private router: Router,
@@ -88,5 +89,9 @@ export class LoginComponent {
         alert('Loggin failed: ' + error.error);
       }
     })
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }
