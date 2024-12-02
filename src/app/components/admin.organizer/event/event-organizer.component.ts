@@ -77,7 +77,7 @@ export class EventOrganizerComponent {
   }
 
   exportExcel(){
-    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/events`; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/excel/export/events`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response

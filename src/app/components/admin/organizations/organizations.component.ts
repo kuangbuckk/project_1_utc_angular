@@ -61,7 +61,7 @@ export class OrganizationsComponent {
   }
 
   exportExcel(){
-    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/organizations`; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/excel/export/organizations`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response
