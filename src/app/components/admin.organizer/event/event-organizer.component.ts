@@ -19,6 +19,8 @@ export class EventOrganizerComponent {
   totalPages:number = 0;
   visiblePages: number[] = [];
 
+  foo: string = 'bar';
+
   constructor(
     private eventService: EventService,
     private router: Router,
