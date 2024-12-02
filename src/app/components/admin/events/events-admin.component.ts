@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Event } from '../../../model/event';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-events-admin',
@@ -106,7 +106,7 @@ export class EventsAdminComponent {
   }
 
   exportExcel(){
-    const fileUrl = 'http://localhost:8090/api/v1/excel/export/events'; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/events`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response
@@ -129,7 +129,7 @@ export class EventsAdminComponent {
   }
 
   exportExcelByStatus(){
-    const fileUrl = 'http://localhost:8090/api/v1/excel/export/events/status'; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/events/status`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response
@@ -152,7 +152,7 @@ export class EventsAdminComponent {
   }
 
   exportExcelByCategory(){
-    const fileUrl = 'http://localhost:8090/api/v1/excel/export/events/category'; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/events/category`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response

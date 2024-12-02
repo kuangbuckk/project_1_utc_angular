@@ -3,6 +3,8 @@ import { Organization } from '../../../model/organization';
 import { OrganizationService } from '../../../services/organization.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../enviroments/enviroment';
+
 @Component({
   selector: 'app-organizations',
   templateUrl: './organizations.component.html',
@@ -59,7 +61,7 @@ export class OrganizationsComponent {
   }
 
   exportExcel(){
-    const fileUrl = 'http://localhost:8090/api/v1/excel/export/organizations'; // Replace with your API endpoint
+    const fileUrl = `${environment.apiBaseUrl}/api/v1/excel/export/organizations`; // Replace with your API endpoint
     this.http.get(fileUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
         // Create a blob from the response
